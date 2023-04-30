@@ -1,26 +1,48 @@
-<h1>TODO APP</h1>
+<body>
+  <section id="cadastro">
 
-<input *ngIf="mostraInput" 
-      placeholder="Nome da tarefa"  
-      [(ngModel)]="tarefa.nome"
-      name="input">
-
-<button (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
-
-<div>
-  <h4 *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">  
-    Tarefa {{ indice }} -> {{ tarefaAdd.nome }} - Categoria: {{ tarefaAdd.categoria }}
-    <br>
-    <div>
-      <h4 style="margin-bottom: 7px;">Adicionar categoria</h4>
-      <button (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
-      <button (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
-      <button (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+    <div id="title">
+      <h1>ToDo-App</h1>
     </div>
-    <br>
-    <button (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-    <!-- <button (click)="adicionarCategoria(tarefaAdd)">Adicionar categoria</button>
-    <input *ngIf="mostraCategoria" [(ngModel)]="pessoa.categoria">
-    <label *ngIf="mostraCategoria">Categoria: {{ tarefaAdd.categoria }}</label> -->
-  </h4>
-</div>
+
+    <div id="register">
+      <input *ngIf="mostraInput" 
+            placeholder="Nome da tarefa"  
+            [(ngModel)]="tarefa.nome"
+            name="input"
+            maxlength="16">
+
+      <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
+    </div>
+  </section>
+
+
+  <section id="tarefas">
+    <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
+      <div id="geral">
+        <div id="textos">
+          <label id="indexTarefa">Tarefa {{ indice }}</label>
+          <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
+          <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+        </div>
+          <br>
+
+          <div id="categoria">
+
+            <label style="margin-bottom: 7px;">Adicionar categoria</label>
+
+            <div id="categoriaBotoes">
+              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
+              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
+              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+            </div>
+          </div>
+          <br>
+
+          <div id="remover">
+            <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
+          </div>
+      </div>
+    </div>
+    </section>
+</body>
