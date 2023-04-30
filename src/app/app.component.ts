@@ -1,56 +1,85 @@
 import { Component } from '@angular/core';
 
-interface Pessoa {
+
+
+
+interface Tarefa {
   nome: string;
   categoria: string;
 }
+
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
+
+
 export class AppComponent {
+  title = 'todo-app';
   
   mostraInput: boolean = true;
-  mostraCategoria: boolean = false;
 
-  usuarios: Pessoa[] = [];
+  lista: Tarefa[] = [];
 
-  pessoa: Pessoa = {
-    nome: 'Sergio',
+  tarefa: Tarefa = {
+    nome: '',
     categoria: ''
   }
 
-  cadastrarUsuario(): void {
-    console.log(this.pessoa);
-    console.log(this.usuarios);
+  // CADASTRAR TAREFA  -------------------------
 
-    const usuario: Pessoa = {
-      nome: this.pessoa.nome,
+  cadastrarTarefa(): void {
+    console.log(this.tarefa);
+    console.log(this.lista);
+
+    const tarefaAdd: Tarefa = {
+      nome: this.tarefa.nome,
       categoria: ''
     }
 
-    this.usuarios.push(usuario);
+    this.lista.push(tarefaAdd);
 
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-    localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
+    localStorage.setItem('lista', JSON.stringify(this.lista));
   }
 
-  removerTarefa(usuario): void {
-    this.usuarios.splice(this.usuarios.indexOf(usuario), 1)
-    localStorage.removeItem('usuario');
-    localStorage.removeItem('usuarios');
+  // REMOVER TAREFA  -------------------------
+
+  removerTarefa(tarefaAdd): void {
+    this.lista.splice(this.lista.indexOf(tarefaAdd), 1)
+
+    for (const i of localStorage.getItem('lista')) {
+      if (i == tarefaAdd) {
+        localStorage.removeItem(i);
+      }
+    };
+
+    localStorage.removeItem('lista');
+    localStorage.setItem('lista', JSON.stringify(this.lista));
+
   }
 
-  adicionarCategoria(usuario, event): void {
-    usuario.categoria = event.target.innerText;
+
+  // ADICIONAR CATEGORIA -------------------------
+
+  adicionarCategoria(tarefaAdd, event): void {
+    tarefaAdd.categoria = event.target.innerText;
+    localStorage.removeItem('lista');
+    localStorage.setItem('lista', JSON.stringify(this.lista));
   }
 
-  filterName : string = null;
+
+  // LIMPAR INPUT  -------------------------
+
+  input : string = null;
+
   limpar() {
-    this.pessoa.nome = ''
+    this.tarefa.nome = ''
   }
 
-  title = 'todo-app';
 }

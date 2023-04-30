@@ -1,26 +1,26 @@
 <h1>TODO APP</h1>
 
 <input *ngIf="mostraInput" 
-      placeholder="Nome" 
-      [(ngModel)]="pessoa.nome"
-      name="filterName">
+      placeholder="Nome da tarefa"  
+      [(ngModel)]="tarefa.nome"
+      name="input">
 
-<button (click)="cadastrarUsuario()" (click)="limpar()">Cadastrar</button>
+<button (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
 
 <div>
-  <h4 *ngFor="let usuario of usuarios; index as indice; first as isFirst">  
-    Tarefa {{ indice }} -> {{ usuario.nome }} - Categoria: {{ usuario.categoria }}
+  <h4 *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">  
+    Tarefa {{ indice }} -> {{ tarefaAdd.nome }} - Categoria: {{ tarefaAdd.categoria }}
     <br>
     <div>
       <h4 style="margin-bottom: 7px;">Adicionar categoria</h4>
-      <button (click)="adicionarCategoria(usuario, $event)">TODO</button>
-      <button (click)="adicionarCategoria(usuario, $event)">DOING</button>
-      <button (click)="adicionarCategoria(usuario, $event)">DONE</button>
+      <button (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
+      <button (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
+      <button (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
     </div>
     <br>
-    <button (click)="removerTarefa(usuario)">Remover tarefa</button>
-    <!-- <button (click)="adicionarCategoria(usuario)">Adicionar categoria</button>
+    <button (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
+    <!-- <button (click)="adicionarCategoria(tarefaAdd)">Adicionar categoria</button>
     <input *ngIf="mostraCategoria" [(ngModel)]="pessoa.categoria">
-    <label *ngIf="mostraCategoria">Categoria: {{ usuario.categoria }}</label> -->
+    <label *ngIf="mostraCategoria">Categoria: {{ tarefaAdd.categoria }}</label> -->
   </h4>
 </div>
