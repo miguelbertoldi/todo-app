@@ -18,7 +18,10 @@ button {
 }
 
 #title {
-    margin-left: 4%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
 }
 
 #title:hover {
@@ -27,7 +30,7 @@ button {
 }
 
 #register {
-    width: 79%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -49,7 +52,7 @@ button {
 }
 
 input {
-    width: 200px;
+    width: 300px;
     height: 30px;
     padding-left: 8px;
     font-size: 15px;
