@@ -26,31 +26,102 @@
 
 
   <section id="tarefas">
-    <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
-      <div id="geral">
-        <div id="textos">
-          <label id="indexTarefa">Tarefa {{ indice }}</label>
-          <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
-          <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
-        </div>
-          <br>
 
-          <div id="categoria">
+    <div id="todo" class="coluna">
+      <p>TODO</p>
 
-            <label style="margin-bottom: 7px;">Adicionar categoria</label>
-
-            <div id="categoriaBotoes">
-              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
-              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
-              <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
+        <div *ngIf="tarefaAdd.categoria == 'TODO'" id="geral">
+          <div id="textos">
+            <label id="indexTarefa">Tarefa {{ indice }}</label>
+            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
+            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+          </div>
+            <br>
+  
+            <div id="categoria">
+  
+              <label style="margin-bottom: 7px;">Adicionar categoria</label>
+  
+              <div id="categoriaBotoes">
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+              </div>
             </div>
-          </div>
-          <br>
-
-          <div id="remover">
-            <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-          </div>
+            <br>
+  
+            <div id="remover">
+              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
+            </div>
+        </div>
       </div>
     </div>
+
+    <div id="doing" class="coluna"> 
+      <p>DOING</p>
+
+      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
+        <div *ngIf="tarefaAdd.categoria == 'DOING'" id="geral">
+          <div id="textos">
+            <label id="indexTarefa">Tarefa {{ indice }}</label>
+            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
+            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+          </div>
+            <br>
+  
+            <div id="categoria">
+  
+              <label style="margin-bottom: 7px;">Adicionar categoria</label>
+  
+              <div id="categoriaBotoes">
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+              </div>
+            </div>
+            <br>
+  
+            <div id="remover">
+              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="done" class="coluna"> 
+      <p>DONE</p>
+
+      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
+        <div *ngIf="tarefaAdd.categoria == 'DONE'" id="geral">
+          <div id="textos">
+            <label id="indexTarefa">Tarefa {{ indice }}</label>
+            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
+            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+          </div>
+            <br>
+  
+            <div id="categoria">
+  
+              <label style="margin-bottom: 7px;">Adicionar categoria</label>
+  
+              <div id="categoriaBotoes">
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
+                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
+              </div>
+            </div>
+            <br>
+  
+            <div id="remover">
+              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  
     </section>
 </body>

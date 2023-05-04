@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 
-
-
-
 interface Tarefa {
   nome: string;
   categoria: string;
 }
-
-
-
 
 @Component({
   selector: 'app-root',
@@ -18,13 +12,13 @@ interface Tarefa {
 })
 
 
-
-
 export class AppComponent {
   title = 'todo-app';
 
   ngOnInit(): void {
-    this.lista = JSON.parse(localStorage.getItem('lista'));
+    if (localStorage.getItem('lista') != null) {
+      this.lista = JSON.parse(localStorage.getItem('lista'));
+    }
   }
   
   mostraInput: boolean = true;
