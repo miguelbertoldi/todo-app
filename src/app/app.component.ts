@@ -21,11 +21,11 @@ interface Tarefa {
 
 
 export class AppComponent {
+  title = 'todo-app';
+
   ngOnInit(): void {
     this.lista = JSON.parse(localStorage.getItem('lista'));
   }
-
-  title = 'todo-app';
   
   mostraInput: boolean = true;
 
