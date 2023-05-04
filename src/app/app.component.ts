@@ -44,7 +44,7 @@ export class AppComponent {
 
     const tarefaAdd: Tarefa = {
       nome: this.tarefa.nome,
-      categoria: ''
+      categoria: this.tarefa.categoria
     }
 
     this.lista.push(tarefaAdd);

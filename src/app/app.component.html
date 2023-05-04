@@ -6,11 +6,18 @@
     </div>
 
     <div id="register">
-      <input *ngIf="mostraInput" 
-            placeholder="Digite o nome da tarefa"  
+      <input placeholder="Digite o nome da tarefa"  
             [(ngModel)]="tarefa.nome"
             name="input"
             maxlength="16">
+      
+      <select class="select"
+      name="categoria"
+      [(ngModel)]="tarefa.categoria">
+        <option>TODO</option>
+        <option>DOING</option>
+        <option>DONE</option>
+      </select>
 
       <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
     </div>
