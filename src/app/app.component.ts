@@ -41,9 +41,7 @@ export class AppComponent {
   // CADASTRAR TAREFA  -------------------------
 
   cadastrarTarefa(): void {
-    console.log(this.tarefa);
-    console.log(this.lista);
-
+    
     const tarefaAdd: Tarefa = {
       nome: this.tarefa.nome,
       categoria: this.tarefa.categoria
@@ -88,7 +86,8 @@ export class AppComponent {
   input : string = null;
 
   limpar() {
-    this.tarefa.nome = ''
+    this.tarefa.nome = '';
+    this.tarefa.categoria = '';
   }
 
   visibleDone(): void {
