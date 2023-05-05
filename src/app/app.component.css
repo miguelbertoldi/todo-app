@@ -208,4 +208,26 @@ label {
     font-family: sans-serif;
     font-weight: bolder;
     text-align: center;
+    border: solid black 2px;
+    padding: 10px 130px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.coluna > p:hover {
+    background-color: purple;
+    color: white;
+    transition: 0.3s;
+}
+
+@media (max-width: 1045px) {
+    .coluna {
+        margin: 0 50px;
+    }
+}
+
+@media (max-width: 765px) {
+    .coluna {
+        margin: 0 80px;
+    }
 }

@@ -27,8 +27,8 @@
 
   <section id="tarefas">
 
-    <div id="todo" class="coluna">
-      <p>TODO</p>
+    <div id="todo" class="coluna" *ngIf="todoVisible">
+      <p (click)="visibleTodo()">TODO</p>
 
       <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
         <div *ngIf="tarefaAdd.categoria == 'TODO'" id="geral">
@@ -58,8 +58,8 @@
       </div>
     </div>
 
-    <div id="doing" class="coluna"> 
-      <p>DOING</p>
+    <div id="doing" class="coluna" *ngIf="doingVisible"> 
+      <p (click)="visibleDoing()">DOING</p>
 
       <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
         <div *ngIf="tarefaAdd.categoria == 'DOING'" id="geral">
@@ -91,8 +91,8 @@
     </div>
 
 
-    <div id="done" class="coluna"> 
-      <p>DONE</p>
+    <div id="done" class="coluna" *ngIf="doneVisible"> 
+      <p (click)="visibleDone()">DONE</p>
 
       <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
         <div *ngIf="tarefaAdd.categoria == 'DONE'" id="geral">
@@ -105,7 +105,7 @@
   
             <div id="categoria">
   
-              <label style="margin-bottom: 7px;">Adicionar categoria</label>
+              <label style="margin-bottom: 7px;">Alterar categoria</label>
   
               <div id="categoriaBotoes">
                 <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>

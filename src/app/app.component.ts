@@ -15,6 +15,10 @@ interface Tarefa {
 export class AppComponent {
   title = 'todo-app';
 
+  todoVisible: boolean = true;
+  doingVisible: boolean = true;
+  doneVisible: boolean = true;
+
   ngOnInit(): void {
     if (localStorage.getItem('lista') != null) {
       this.lista = JSON.parse(localStorage.getItem('lista'));
@@ -41,9 +45,12 @@ export class AppComponent {
       categoria: this.tarefa.categoria
     }
 
-    this.lista.push(tarefaAdd);
-
-    localStorage.setItem('lista', JSON.stringify(this.lista));
+    if(tarefaAdd.categoria != '' && tarefaAdd.nome != ''){
+      
+      this.lista.push(tarefaAdd);
+      
+      localStorage.setItem('lista', JSON.stringify(this.lista));
+    }
   }
 
   // REMOVER TAREFA  -------------------------
@@ -79,5 +86,43 @@ export class AppComponent {
   limpar() {
     this.tarefa.nome = ''
   }
+
+  visibleDone(): void {
+
+    if (!this.todoVisible) {
+      this.todoVisible = true;
+      this.doingVisible = true;
+
+    } else {
+      this.todoVisible = false;
+      this.doingVisible = false;
+    }
+
+  } 
+
+  visibleDoing(): void {
+
+    if (!this.todoVisible) {
+      this.todoVisible = true;
+      this.doneVisible = true;
+
+    } else {
+      this.todoVisible = false;
+      this.doneVisible = false;
+    }
+
+  } 
+
+  visibleTodo(): void {
+
+    if (!this.doingVisible) {
+      this.doingVisible = true;
+      this.doneVisible = true;
+
+    } else {
+      this.doingVisible = false;
+      this.doneVisible = false;
+    }
+  } 
 
 }
