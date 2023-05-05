@@ -222,14 +222,14 @@ label {
     transition: 0.3s;
 }
 
-@media (max-width: 1045px) {
+@media (max-width: 1100px) {
     .coluna {
-        margin: 0 50px;
+        margin: 0 70px;
     }
 }
 
-@media (max-width: 765px) {
+@media (max-width: 735px) {
     .coluna {
-        margin: 0 80px;
+        margin: 0 70px;
     }
 }
