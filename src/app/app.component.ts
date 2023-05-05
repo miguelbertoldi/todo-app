@@ -127,5 +127,4 @@ export class AppComponent {
       this.doneVisible = false;
     }
   } 
-
 }
