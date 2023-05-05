@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren } from '@angular/core';
 
 interface Tarefa {
   nome: string;
@@ -14,6 +14,10 @@ interface Tarefa {
 
 export class AppComponent {
   title = 'todo-app';
+
+  @ViewChildren('divDone') done;
+  @ViewChildren('divDoing') doing;
+  @ViewChildren('divTodo') todo;
   
   todoVisible: boolean = true;
   doingVisible: boolean = true;
