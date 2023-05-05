@@ -91,7 +91,7 @@
     </div>
 
 
-    <div id="done" class="coluna" *ngIf="doneVisible"> 
+    <div id="done" class="coluna" *ngIf="doneVisible" name="done"> 
       <p (click)="visibleDone()">DONE</p>
 
       <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">

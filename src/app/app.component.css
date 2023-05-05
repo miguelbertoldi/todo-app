@@ -81,12 +81,14 @@ input:hover {
     background-color: black;
     color: white;
     border: solid grey 2px;
+    cursor: pointer;
 }
 
 .select:hover {
     border: solid purple 2px;
     transition: 0.3s;
 }
+
 
 
 /* -------------------------------------------------------------------------------- */

@@ -14,7 +14,7 @@ interface Tarefa {
 
 export class AppComponent {
   title = 'todo-app';
-
+  
   todoVisible: boolean = true;
   doingVisible: boolean = true;
   doneVisible: boolean = true;
