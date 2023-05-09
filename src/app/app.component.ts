@@ -22,6 +22,7 @@ export class AppComponent {
   todoVisible: boolean = true;
   doingVisible: boolean = true;
   doneVisible: boolean = true;
+  inputVisible: boolean = true;
 
   ngOnInit(): void {
     if (localStorage.getItem('lista') != null) {
@@ -52,6 +53,8 @@ export class AppComponent {
       this.lista.push(tarefaAdd);
       
       localStorage.setItem('lista', JSON.stringify(this.lista));
+
+      this.inputVisible = false;   
     }
   }
 
@@ -78,6 +81,7 @@ export class AppComponent {
     tarefaAdd.categoria = event.target.innerText;
     localStorage.removeItem('lista');
     localStorage.setItem('lista', JSON.stringify(this.lista));
+
   }
 
 
@@ -88,6 +92,10 @@ export class AppComponent {
   limpar() {
     this.tarefa.nome = '';
     this.tarefa.categoria = '';
+  }
+
+  inputView(): void {
+    this.inputVisible = true;
   }
 
   visibleDone(): void {

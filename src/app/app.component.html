@@ -5,9 +5,12 @@
       <h1>ToDo-App</h1>
     </div>
 
-    <div id="register">
-      <input *ngIf="mostraInput" 
-            placeholder="Digite o nome da tarefa"  
+    <div class="register" *ngIf="!inputVisible" (click)="inputView()">
+      <button>Cadastrar</button>
+    </div>
+
+    <div *ngIf="inputVisible" class="register">
+      <input placeholder="Digite o nome da tarefa"  
             [(ngModel)]="tarefa.nome"
             name="input"
             maxlength="16">
