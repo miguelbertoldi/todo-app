@@ -1,3 +1,4 @@
+import { SlicePipe } from '@angular/common';
 import { Component, ViewChildren } from '@angular/core';
 
 interface Tarefa {
@@ -53,18 +54,39 @@ export class AppComponent {
 
     this.listaCategorias.push(this.categoria);
     localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+
   }
 
+  alterarCategoriaTarefa(opcao): void {
+    console.log(opcao)
+  }
+
+
   removerCategoria(categoriaAdd): void {
+    //Add lista categorias
     this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaAdd), 1);
     localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
 
+
+    //Remover itens da categoria removida
+
+    let lista2 = JSON.parse(localStorage.getItem('lista'));
+
+    for (const i of lista2) {
+      if (i.categoria == categoriaAdd) {
+        lista2.splice(this.lista.indexOf(i), 1);
+      }
+    }
+
+    this.lista = lista2;
+    localStorage.removeItem('lista');
+    localStorage.setItem('lista', JSON.stringify(this.lista));
   }
+  
+
+
 
   // TAREFA  -------------------------
-
-
-
   cadastrarTarefa(): void {
     
     const tarefaAdd: Tarefa = {
@@ -91,6 +113,15 @@ export class AppComponent {
       }
     };
 
+    localStorage.removeItem('lista');
+    localStorage.setItem('lista', JSON.stringify(this.lista));
+
+  }
+
+  // ALTERAR CATEGORIA -------------------------
+
+  alterarCategoria(tarefaAdd, event): void {
+    tarefaAdd.categoria = event.target.innerText;
     localStorage.removeItem('lista');
     localStorage.setItem('lista', JSON.stringify(this.lista));
 

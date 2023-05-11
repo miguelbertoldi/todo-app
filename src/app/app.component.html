@@ -1,67 +1,62 @@
-<body>
-  <section id="cadastro">
+<router-outlet></router-outlet>
 
-    <div id="title">
-      <h1>ToDo-App</h1>
-    </div>
+<section id="cadastro">
 
-    <div class="register" *ngIf="!inputVisible" (click)="inputView()">
-      <button>Cadastrar</button>
-    </div>
+  <div id="title">
+    <h1>ToDo-App</h1>
+  </div>
 
-    <div *ngIf="inputVisible" class="register">
-      <input placeholder="Digite o nome da tarefa"  
-            [(ngModel)]="tarefa.nome"
-            name="input"
-            maxlength="16">
+  <div class="register" *ngIf="!inputVisible" (click)="inputView()">
+    <button>Cadastrar</button>
+  </div>
 
-      <select class="select"
-      name="categoria"
-      [(ngModel)]="tarefa.categoria">
+  <div *ngIf="inputVisible" class="register">
+    <input placeholder="Digite o nome da tarefa" [(ngModel)]="tarefa.nome" name="input" maxlength="16">
+
+    <select class="select" name="categoria" [(ngModel)]="tarefa.categoria">
       <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
-      </select>
+    </select>
 
-      <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
-    </div>
+    <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
+  </div>
 
-    <div> 
-      <input [(ngModel)]="categoria">
+  <div>
+    <input [(ngModel)]="categoria">
 
-      <button (click)="inserirCategoria()" (click)="limpar()">Cadastrar categoria</button>
-    </div>
-  </section>
+    <button (click)="inserirCategoria()" (click)="limpar()">Cadastrar categoria</button>
+  </div>
+</section>
 
-  <section id="tarefas">
+<section id="tarefas">
 
-    <div class="coluna" *ngFor="let categoriaAdd of listaCategorias;">
-      <p>{{ categoriaAdd }} <button (click)="removerCategoria(categoriaAdd)">Remover</button></p>
+  <div class="coluna" *ngFor="let categoriaAdd of listaCategorias;">
+    <p>{{ categoriaAdd }} <button (click)="removerCategoria(categoriaAdd, tarefaAdd)">Remover</button></p>
 
-      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice;">
-        <div *ngIf="tarefaAdd.categoria == categoriaAdd" id="geral">
-          <div id="textos">
-            <label id="indexTarefa">Tarefa {{ indice }}</label>
-            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
-            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+    <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice;">
+      <div *ngIf="tarefaAdd.categoria == categoriaAdd" id="geral">
+        <div id="textos">
+          <label id="indexTarefa">Tarefa {{ indice }}</label>
+          <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
+          <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
+        </div>
+        <br>
+
+        <div id="categoria">
+
+          <label style="margin-bottom: 7px;">Alterar categoria</label>
+
+          <div id="categoriaBotoes">
+            <select> 
+              <option *ngFor="let opcao of listaCategorias;"> {{ opcao }} </option>
+            </select>
           </div>
-            <br>
-  
-            <div id="categoria">
-  
-              <label style="margin-bottom: 7px;">Alterar categoria</label>
-  
-              <div id="categoriaBotoes">
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
-              </div>
-            </div>
-            <br>
-  
-            <div id="remover">
-              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-            </div>
+        </div>
+        <br>
+
+        <div id="remover">
+          <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
         </div>
       </div>
     </div>
-    </section>
-</body>
+  </div>
+</section>
