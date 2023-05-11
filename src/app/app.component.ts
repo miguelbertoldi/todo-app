@@ -48,6 +48,7 @@ export class AppComponent {
 
   categoria: string = '';
 
+
   // CATEGORIA -------------------------------------------
 
   inserirCategoria(): void {
@@ -57,8 +58,8 @@ export class AppComponent {
 
   }
 
-  alterarCategoriaTarefa(opcao): void {
-    console.log(opcao)
+  alterarCategoriaTarefa(tarefaAdd): void {
+     tarefaAdd.categoria = this.categoria; 
   }
 
 

@@ -1,0 +1,13 @@
+<div class="register" *ngIf="!inputVisible" (click)="inputView()">
+    <button>Cadastrar</button>
+  </div>
+
+  <div *ngIf="inputVisible" class="register">
+    <input placeholder="Digite o nome da tarefa" [(ngModel)]="tarefa.nome" name="input" maxlength="16">
+
+    <select class="select" name="categoria" [(ngModel)]="tarefa.categoria">
+      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
+    </select>
+
+    <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
+</div>

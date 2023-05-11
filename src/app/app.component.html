@@ -46,7 +46,7 @@
           <label style="margin-bottom: 7px;">Alterar categoria</label>
 
           <div id="categoriaBotoes">
-            <select> 
+            <select (change)="alterarCategoriaTarefa(tarefaAdd)" [(ngModel)]="categoria"> 
               <option *ngFor="let opcao of listaCategorias;"> {{ opcao }} </option>
             </select>
           </div>
