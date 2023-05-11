@@ -18,23 +18,26 @@
       <select class="select"
       name="categoria"
       [(ngModel)]="tarefa.categoria">
-      <option>TODO</option>
-      <option>DOING</option>
-      <option>DONE</option>
+      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
       </select>
 
       <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
     </div>
-  </section>
 
+    <div> 
+      <input [(ngModel)]="categoria">
+
+      <button (click)="inserirCategoria()" (click)="limpar()">Cadastrar categoria</button>
+    </div>
+  </section>
 
   <section id="tarefas">
 
-    <div id="todo" class="coluna" *ngIf="todoVisible" #divTodo>
-      <p (click)="visibleTodo()">TODO</p>
+    <div class="coluna" *ngFor="let categoriaAdd of listaCategorias;">
+      <p>{{ categoriaAdd }} <button (click)="removerCategoria(categoriaAdd)">Remover</button></p>
 
-      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
-        <div *ngIf="tarefaAdd.categoria == 'TODO'" id="geral">
+      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice;">
+        <div *ngIf="tarefaAdd.categoria == categoriaAdd" id="geral">
           <div id="textos">
             <label id="indexTarefa">Tarefa {{ indice }}</label>
             <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
@@ -60,71 +63,5 @@
         </div>
       </div>
     </div>
-
-    <div id="doing" class="coluna" *ngIf="doingVisible" #divDoing> 
-      <p (click)="visibleDoing()">DOING</p>
-
-      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
-        <div *ngIf="tarefaAdd.categoria == 'DOING'" id="geral">
-          <div id="textos">
-            <label id="indexTarefa">Tarefa {{ indice }}</label>
-            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
-            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
-          </div>
-            <br>
-  
-            <div id="categoria">
-  
-              <label style="margin-bottom: 7px;">Alterar categoria</label>
-  
-              <div id="categoriaBotoes">
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
-              </div>
-            </div>
-            <br>
-  
-            <div id="remover">
-              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-            </div>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div id="done" class="coluna" *ngIf="doneVisible" name="done" #divDone> 
-      <p (click)="visibleDone()">DONE</p>
-
-      <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice; first as isFirst">
-        <div *ngIf="tarefaAdd.categoria == 'DONE'" id="geral">
-          <div id="textos">
-            <label id="indexTarefa">Tarefa {{ indice }}</label>
-            <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
-            <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
-          </div>
-            <br>
-  
-            <div id="categoria">
-  
-              <label style="margin-bottom: 7px;">Alterar categoria</label>
-  
-              <div id="categoriaBotoes">
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">TODO</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DOING</button>
-                <button class="botaoCategoriaUn" (click)="adicionarCategoria(tarefaAdd, $event)">DONE</button>
-              </div>
-            </div>
-            <br>
-  
-            <div id="remover">
-              <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-            </div>
-        </div>
-      </div>
-
-    </div>
-  
     </section>
 </body>

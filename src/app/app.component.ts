@@ -5,6 +5,10 @@ interface Tarefa {
   categoria: string;
 }
 
+interface Categoria {
+  nome: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,10 +18,6 @@ interface Tarefa {
 
 export class AppComponent {
   title = 'todo-app';
-
-  @ViewChildren('divDone') done;
-  @ViewChildren('divDoing') doing;
-  @ViewChildren('divTodo') todo;
   
   todoVisible: boolean = true;
   doingVisible: boolean = true;
@@ -28,18 +28,42 @@ export class AppComponent {
     if (localStorage.getItem('lista') != null) {
       this.lista = JSON.parse(localStorage.getItem('lista'));
     }
+
+    if (localStorage.getItem('listaCategorias') != null) {
+      this.listaCategorias = JSON.parse(localStorage.getItem('listaCategorias'));
+    }
   }
   
   mostraInput: boolean = true;
 
   lista: Tarefa[] = [];
 
+  listaCategorias = ['TODO', 'DOING', 'DONE']
+
   tarefa: Tarefa = {
     nome: '',
     categoria: ''
   }
 
-  // CADASTRAR TAREFA  -------------------------
+  categoria: string = '';
+
+  // CATEGORIA -------------------------------------------
+
+  inserirCategoria(): void {
+
+    this.listaCategorias.push(this.categoria);
+    localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+  }
+
+  removerCategoria(categoriaAdd): void {
+    this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaAdd), 1);
+    localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+
+  }
+
+  // TAREFA  -------------------------
+
+
 
   cadastrarTarefa(): void {
     
@@ -58,8 +82,6 @@ export class AppComponent {
     }
   }
 
-  // REMOVER TAREFA  -------------------------
-
   removerTarefa(tarefaAdd): void {
     this.lista.splice(this.lista.indexOf(tarefaAdd), 1)
 
@@ -74,65 +96,18 @@ export class AppComponent {
 
   }
 
-
-  // ADICIONAR CATEGORIA -------------------------
-
-  adicionarCategoria(tarefaAdd, event): void {
-    tarefaAdd.categoria = event.target.innerText;
-    localStorage.removeItem('lista');
-    localStorage.setItem('lista', JSON.stringify(this.lista));
-
-  }
-
-
-  // LIMPAR INPUT  -------------------------
+  //  INPUT  -------------------------
 
   input : string = null;
 
   limpar() {
     this.tarefa.nome = '';
     this.tarefa.categoria = '';
+    this.categoria = '';
   }
 
   inputView(): void {
     this.inputVisible = true;
   }
 
-  visibleDone(): void {
-
-    if (!this.todoVisible) {
-      this.todoVisible = true;
-      this.doingVisible = true;
-
-    } else {
-      this.todoVisible = false;
-      this.doingVisible = false;
-    }
-
-  } 
-
-  visibleDoing(): void {
-
-    if (!this.todoVisible) {
-      this.todoVisible = true;
-      this.doneVisible = true;
-
-    } else {
-      this.todoVisible = false;
-      this.doneVisible = false;
-    }
-
-  } 
-
-  visibleTodo(): void {
-
-    if (!this.doingVisible) {
-      this.doingVisible = true;
-      this.doneVisible = true;
-
-    } else {
-      this.doingVisible = false;
-      this.doneVisible = false;
-    }
-  } 
 }
