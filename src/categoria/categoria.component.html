@@ -1,0 +1,9 @@
+<div>
+    <input [(ngModel)]="categoria"> 
+    <button (click)="cadastrarCategoria()">Cadastrar</button>
+</div>
+
+<div *ngFor="let categoria of listaCategorias" style="display: flex;">
+    <p>{{ categoria }}</p>
+    <button (click)="removerCategoria(categoria)">Remover</button>
+</div>

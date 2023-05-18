@@ -1,62 +1,6 @@
-<router-outlet></router-outlet>
+<button routerLink="/categoria">Categorias</button>
+<button routerLink="/tarefas">Tarefas</button>
 
-<section id="cadastro">
-
-  <div id="title">
-    <h1>ToDo-App</h1>
-  </div>
-
-  <div class="register" *ngIf="!inputVisible" (click)="inputView()">
-    <button>Cadastrar</button>
-  </div>
-
-  <div *ngIf="inputVisible" class="register">
-    <input placeholder="Digite o nome da tarefa" [(ngModel)]="tarefa.nome" name="input" maxlength="16">
-
-    <select class="select" name="categoria" [(ngModel)]="tarefa.categoria">
-      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
-    </select>
-
-    <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
-  </div>
-
-  <div>
-    <input [(ngModel)]="categoria">
-
-    <button (click)="inserirCategoria()" (click)="limpar()">Cadastrar categoria</button>
-  </div>
-</section>
-
-<section id="tarefas">
-
-  <div class="coluna" *ngFor="let categoriaAdd of listaCategorias;">
-    <p>{{ categoriaAdd }} <button (click)="removerCategoria(categoriaAdd, tarefaAdd)">Remover</button></p>
-
-    <div class="tarefa" *ngFor="let tarefaAdd of lista; index as indice;">
-      <div *ngIf="tarefaAdd.categoria == categoriaAdd" id="geral">
-        <div id="textos">
-          <label id="indexTarefa">Tarefa {{ indice }}</label>
-          <label id="titleTarefa">{{ tarefaAdd.nome }}</label> <br>
-          <label id="categoriaTarefa">Categoria: <strong>{{ tarefaAdd.categoria }}</strong></label>
-        </div>
-        <br>
-
-        <div id="categoria">
-
-          <label style="margin-bottom: 7px;">Alterar categoria</label>
-
-          <div id="categoriaBotoes">
-            <select (change)="alterarCategoriaTarefa(tarefaAdd)" [(ngModel)]="categoria"> 
-              <option *ngFor="let opcao of listaCategorias;"> {{ opcao }} </option>
-            </select>
-          </div>
-        </div>
-        <br>
-
-        <div id="remover">
-          <button id="botaoRemover" (click)="removerTarefa(tarefaAdd)">Remover tarefa</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div>
+  <router-outlet></router-outlet>
+</div>

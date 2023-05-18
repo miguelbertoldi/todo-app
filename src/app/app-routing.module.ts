@@ -9,7 +9,7 @@ const routes: Route[] = [
         component: CategoriaComponent
     },
     {
-        path: 'todo',
+        path: 'tarefas',
         component: TodoComponent
     },
 

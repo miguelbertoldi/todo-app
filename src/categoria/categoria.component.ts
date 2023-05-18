@@ -1,9 +1,29 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-    template: '<h1>Olá Categoria</h1>'
+    templateUrl: 'categoria.component.html'
 })
 
 export class CategoriaComponent {
+    listaCategorias: string[] = [];
+    categoria: string = '';
+
+    ngOnInit() {
+        if (localStorage.getItem('listaCategorias') != null) {
+            this.listaCategorias = JSON.parse(localStorage.getItem('listaCategorias'));
+        }
+    }
+
+    cadastrarCategoria(): void {
+        this.listaCategorias.push(this.categoria);
+        localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+    }
+
+    removerCategoria(categoriaRm): void {
+        this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm));
+    }
+
+
+
 
 }
