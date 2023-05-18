@@ -1,13 +1,35 @@
-<div class="register" *ngIf="!inputVisible" (click)="inputView()">
-    <button>Cadastrar</button>
-  </div>
+<h1>Cadastro de tarefas</h1>
 
-  <div *ngIf="inputVisible" class="register">
-    <input placeholder="Digite o nome da tarefa" [(ngModel)]="tarefa.nome" name="input" maxlength="16">
-
-    <select class="select" name="categoria" [(ngModel)]="tarefa.categoria">
-      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
-    </select>
-
-    <button id="cadastrar" (click)="cadastrarTarefa()" (click)="limpar()">Cadastrar</button>
+<div>
+  <input [(ngModel)]="nomeTarefa">
+  <select [(ngModel)]="categoria">
+    <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
+  </select>
+  <button (click)="cadastrarTarefa()">Cadastrar</button>
 </div>
+
+<section class="lista-container">
+  <div *ngFor="let categoria of listaCategorias">
+    <p> {{ categoria }} </p>
+
+    <div *ngFor="let tarefa of listaTarefas">
+      <div *ngIf="tarefa.categoria == categoria">
+        <div>
+          <p>Nome: {{ tarefa.nome }}</p>
+          <p>Categoria: {{ tarefa.categoria }}</p>
+        </div>
+
+        <div>
+            <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
+              <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
+            </select>
+        </div>
+
+        <div>
+          <button (click)="removerTarefa(tarefa)">Remover</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
