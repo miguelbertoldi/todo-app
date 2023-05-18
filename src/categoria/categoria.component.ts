@@ -17,11 +17,16 @@ export class CategoriaComponent {
     cadastrarCategoria(): void {
         this.listaCategorias.push(this.categoria);
         localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+        this.limparInput();
     }
 
     removerCategoria(categoriaRm): void {
         this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm), 1);
         localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+    }
+
+    limparInput(): void {
+        this.categoria = '';
     }
 
 

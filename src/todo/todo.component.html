@@ -1,10 +1,12 @@
 <h1>Cadastro de tarefas</h1>
 
 <div>
-  <input [(ngModel)]="nomeTarefa">
+  <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa">
+  
   <select [(ngModel)]="categoria">
     <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
   </select>
+
   <button (click)="cadastrarTarefa()">Cadastrar</button>
 </div>
 
@@ -14,6 +16,7 @@
 
     <div *ngFor="let tarefa of listaTarefas">
       <div *ngIf="tarefa.categoria == categoria">
+
         <div>
           <p>Nome: {{ tarefa.nome }}</p>
           <p>Categoria: {{ tarefa.categoria }}</p>

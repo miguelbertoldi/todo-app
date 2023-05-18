@@ -53,11 +53,13 @@ export class TodoComponent {
 
     alterarCategoria(tarefaClick): void {
         tarefaClick.categoria = this.categoriaAlt;
+        this.limparInput();
     }
 
     limparInput(): void {
         this.nomeTarefa = '';
         this.categoria = '';
+        this.categoriaAlt = '';
     }
 
 }
