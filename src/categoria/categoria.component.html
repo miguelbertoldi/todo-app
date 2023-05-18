@@ -1,11 +1,25 @@
-<h1>Cadastro de categorias</h1>
+<header>
 
-<div>
-    <input [(ngModel)]="categoria" placeholder="Digite o nome da categoria"> 
+    <h1>Categorias</h1>
+
+    <div>
+        <input [(ngModel)]="categoria" placeholder="Digite o nome da categoria"> 
+    </div>
+    
     <button (click)="cadastrarCategoria()">Cadastrar</button>
-</div>
 
-<div *ngFor="let categoria of listaCategorias" style="display: flex;">
-    <p>{{ categoria }}</p>
-    <button (click)="removerCategoria(categoria)">Remover</button>
-</div>
+</header>
+
+<section class="lista-container"> 
+    <div class="colunas-item">
+        <div *ngFor="let categoria of listaCategorias" class="item-categoria">
+            <div>
+                <p>{{ categoria }}</p>
+            </div>
+
+            <div>
+                <button (click)="removerCategoria(categoria)">x</button>
+            </div>
+        </div>
+    </div>
+</section>

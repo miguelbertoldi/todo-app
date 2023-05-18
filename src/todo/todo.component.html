@@ -13,27 +13,26 @@
 </header>
 
 <section class="lista-container">
-  <div *ngFor="let categoria of listaCategorias" class="card-tarefa">
-    <p> {{ categoria }} </p>
+  <div class="colunas-tarefa">
+    <div *ngFor="let categoria of listaCategorias" class="categoria">
+      <p> {{ categoria }} </p>
 
-    <div *ngFor="let tarefa of listaTarefas">
-      <div *ngIf="tarefa.categoria == categoria">
+      <div *ngFor="let tarefa of listaTarefas" class="card-tarefa">
+        <div *ngIf="tarefa.categoria == categoria">
 
-        <div>
-          <p>Nome: {{ tarefa.nome }}</p>
-          <p>Categoria: {{ tarefa.categoria }}</p>
-        </div>
+          <div>
+            <p>Nome: {{ tarefa.nome }}</p>
+            <p>Categoria: {{ tarefa.categoria }}</p>
+          </div>
 
-        <div>
+          <div class="remover-alterar">
+            <button (click)="removerTarefa(tarefa)">Remover</button>
             <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
               <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
             </select>
-        </div>
+          </div>
 
-        <div>
-          <button (click)="removerTarefa(tarefa)">Remover</button>
         </div>
-
       </div>
     </div>
   </div>

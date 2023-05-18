@@ -8,30 +8,21 @@ header {
 }
 
 header input {
-    width: 200px;
+    width: 220px;
     height: 30px;
     border-radius: 10px;
     border: solid black 2px;
     padding-left: 12px;
-    margin-right: 3px;
     margin-top: 5px;
-}
-
-header select {
-    margin-top: 10px;
-    width: 80px;
-    height: 35px;
-    border-radius: 10px;
-    border: solid black 2px;
-    cursor: pointer;
+    margin-right: 3px;
 }
 
 header button {
     margin-top: 3px;
-    width: 300px;
+    width: 240px;
+    height: 28px;
     background-color: black;
     color: white;
-    height: 28px;
     border-radius: 7px;
     border: solid transparent 2px;
     cursor: pointer;
@@ -45,44 +36,50 @@ header button:hover {
 }
 
 
+/* ---------------------------------------------------------- */
+
 .lista-container {
-    margin-top: 50px;
-    width: 100%;
+    margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
     justify-content: center;
-    gap: 33%;
 }
 
-.colunas-tarefa {
+.colunas-item {
+    padding: 20px;
     width: 50%;
-    border: solid black 1px;
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-}
-
-.categoria {
-    width: 33%;
-}
-
-.card-tarefa {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
+    gap: 5px;
 }
 
-.remover-alterar {
-    display: flex;
-    justify-content: center;
-}
-
-.remover-alterar button {
-    width: 70%;
-}
-
-.remover-alterar select {
+.item-categoria {
+    padding: 7px;
     width: 30%;
+    border: solid black 1px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
 }
 
+
+.item-categoria button {
+    text-align: center;
+    font-weight: bold;
+    height: 35px;
+    width: 40px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item-categoria button:hover {
+    background-color: darkred;
+    transition: 0.2s;
+}

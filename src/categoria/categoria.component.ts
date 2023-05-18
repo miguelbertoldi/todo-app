@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-    templateUrl: 'categoria.component.html'
+    templateUrl: './categoria.component.html',
+    styleUrls: ['./categoria.component.css']    
 })
 
 export class CategoriaComponent {
@@ -15,9 +16,12 @@ export class CategoriaComponent {
     }
 
     cadastrarCategoria(): void {
-        this.listaCategorias.push(this.categoria);
-        localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
-        this.limparInput();
+
+        if (this.categoria != '') {
+            this.listaCategorias.push(this.categoria);
+            localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
+            this.limparInput();
+        }
     }
 
     removerCategoria(categoriaRm): void {
