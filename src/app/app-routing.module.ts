@@ -12,6 +12,10 @@ const routes: Route[] = [
         path: 'tarefas',
         component: TodoComponent
     },
+    {
+        path: '',
+        component: TodoComponent
+    }
 
 ]
 

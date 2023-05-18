@@ -5,7 +5,7 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class CategoriaComponent {
-    listaCategorias: string[] = [];
+    listaCategorias: string[] = ['TODO', 'DOING', 'DONE'];
     categoria: string = '';
 
     ngOnInit() {
@@ -20,7 +20,8 @@ export class CategoriaComponent {
     }
 
     removerCategoria(categoriaRm): void {
-        this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm));
+        this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm), 1);
+        localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
     }
 
 
