@@ -10,6 +10,6 @@ import { Component, ViewChildren } from '@angular/core';
 
 
 export class AppComponent {
-  title = 'todo-app';
+  title = 'Todo-App';
   
 }

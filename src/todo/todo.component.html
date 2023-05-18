@@ -1,17 +1,19 @@
-<h1>Cadastro de tarefas</h1>
 
-<div>
-  <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa">
-  
-  <select [(ngModel)]="categoria">
-    <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
-  </select>
+<header>
+  <h1>Tarefas</h1>
 
+  <div>
+    <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa">
+    <select [(ngModel)]="categoria">
+      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
+    </select>
+  </div>
   <button (click)="cadastrarTarefa()">Cadastrar</button>
-</div>
+
+</header>
 
 <section class="lista-container">
-  <div *ngFor="let categoria of listaCategorias">
+  <div *ngFor="let categoria of listaCategorias" class="card-tarefa">
     <p> {{ categoria }} </p>
 
     <div *ngFor="let tarefa of listaTarefas">
