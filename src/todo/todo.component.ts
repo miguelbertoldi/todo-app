@@ -17,6 +17,7 @@ export class TodoComponent {
     categoria: string = '';
     nomeTarefa: string = '';
     categoriaAlt: string = '';
+    showCategoria: boolean = false;
 
     listaTarefas: Tarefa[] = [];
 
@@ -53,8 +54,11 @@ export class TodoComponent {
 
     alterarCategoria(tarefaClick): void {
         tarefaClick.categoria = this.categoriaAlt;
+        localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
         this.limparInput();
     }
+
+    
 
     limparInput(): void {
         this.nomeTarefa = '';

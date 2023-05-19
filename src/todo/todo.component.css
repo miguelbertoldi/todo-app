@@ -44,45 +44,82 @@ header button:hover {
     transition: 0.3s;
 }
 
-
 .lista-container {
-    margin-top: 50px;
+    margin-top: 40px;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 33%;
-}
-
-.colunas-tarefa {
-    width: 50%;
-    border: solid black 1px;
-    display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.categoria {
-    width: 33%;
+    gap: 30px;
 }
 
 .card-tarefa {
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
+    box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
+    width: 220px;
+    height: 91px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+
+.centro {
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.title-tarefa {
+    font-weight: bold;
+}
+
+.nome{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.categoria {
+    font-size: 13px;
+    width: 220px;
 }
 
 .remover-alterar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .remover-alterar button {
-    width: 70%;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    padding-bottom: 7px;
+    color: rgb(104, 104, 104);
+    cursor: pointer;
 }
 
 .remover-alterar select {
-    width: 30%;
+    height: 25px;
+    width: 100px;
+}
+
+.remover-alterar button:hover {
+    background-color: darkgrey;
+    background-color: rgba(161, 161, 161, 0.5);
+    transition: 0.3s;
+}
+
+.title-categoria {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    border: solid black 1px;
 }
 

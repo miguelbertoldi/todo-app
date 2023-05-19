@@ -1,37 +1,47 @@
-
 <header>
   <h1>Tarefas</h1>
 
   <div>
-    <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa">
+    <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa" maxlength="16 ">
+
     <select [(ngModel)]="categoria">
       <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
     </select>
+
   </div>
   <button (click)="cadastrarTarefa()">Cadastrar</button>
 
 </header>
 
 <section class="lista-container">
-  <div class="colunas-tarefa">
+  <div class="centro">
     <div *ngFor="let categoria of listaCategorias" class="categoria">
-      <p> {{ categoria }} </p>
+      <p class="title-categoria"> {{ categoria }} </p>
 
-      <div *ngFor="let tarefa of listaTarefas" class="card-tarefa">
-        <div *ngIf="tarefa.categoria == categoria">
+
+      <div *ngFor="let tarefa of listaTarefas">
+        <div *ngIf="tarefa.categoria == categoria" class="card-tarefa">
 
           <div>
-            <p>Nome: {{ tarefa.nome }}</p>
-            <p>Categoria: {{ tarefa.categoria }}</p>
+            <p class="nome">{{ tarefa.nome }}</p>
+            <p class="categoria">Categoria: <strong>{{ tarefa.categoria }}</strong></p>
           </div>
 
           <div class="remover-alterar">
-            <button (click)="removerTarefa(tarefa)">Remover</button>
-            <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
-              <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
-            </select>
-          </div>
 
+            <button (click)="removerTarefa(tarefa)">Remover</button>
+
+            <div *ngIf="showCategoria">
+              <button (click)="showCategoriaFunc()">Alterar categoria</button>
+            </div>
+
+
+            <div *ngIf="!showCategoria">
+              <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
+                <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>

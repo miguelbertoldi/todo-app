@@ -13,7 +13,7 @@ header input {
     border-radius: 10px;
     border: solid black 2px;
     padding-left: 12px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 3px;
 }
 
@@ -39,7 +39,7 @@ header button:hover {
 /* ---------------------------------------------------------- */
 
 .lista-container {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     gap: 10px;
     width: 100%;
