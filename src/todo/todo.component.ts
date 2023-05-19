@@ -52,10 +52,15 @@ export class TodoComponent {
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
     }
 
-    alterarCategoria(tarefaClick): void {
-        tarefaClick.categoria = this.categoriaAlt;
+    alterarCategoria(tarefa): void {
+        tarefa.categoria = this.categoriaAlt;
+        tarefa.showCategoria = false;
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
         this.limparInput();
+    }
+
+    showCategoriaFunc(tarefa): void {
+        tarefa.showCategoria = true;
     }
 
     

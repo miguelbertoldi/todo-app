@@ -31,12 +31,12 @@
 
             <button (click)="removerTarefa(tarefa)">Remover</button>
 
-            <div *ngIf="showCategoria">
-              <button (click)="showCategoriaFunc()">Alterar categoria</button>
+            <div *ngIf="!tarefa.showCategoria">
+              <button (click)="showCategoriaFunc(tarefa)">Alterar categoria</button>
             </div>
 
 
-            <div *ngIf="!showCategoria">
+            <div *ngIf="tarefa.showCategoria">
               <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
                 <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
               </select>
