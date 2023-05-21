@@ -1,20 +1,42 @@
 import { Component, OnInit } from "@angular/core";
-import { Console } from "console";
 
 interface Tarefa {
     nome: string,
     categoria: string
 }
 
+interface Categoria {
+  nome: string,
+  color: string
+}
+
+const todo: Categoria = {
+  nome: 'TODO',
+  color: '#cd5c5c'
+}
+
+const doing: Categoria = {
+  nome: 'DOING',
+  color: '#ffff9e'
+}
+
+const done: Categoria = {
+  nome: 'DONE',
+  color: 'lightgreen'
+}
+
+
 @Component({
     templateUrl: './categoria.component.html',
-    styleUrls: ['./categoria.component.css']    
+    styleUrls: ['./categoria.component.css']
 })
 
 export class CategoriaComponent {
-    listaCategorias: string[] = ['TODO', 'DOING', 'DONE'];
+
+    listaCategorias: Categoria[] = [todo, doing, done];
     listaTarefas: Tarefa[] = [];
-    categoria: string = '';
+    nome: string = '';
+    color: string = '#ff9ef7';
 
     ngOnInit() {
         if (localStorage.getItem('listaCategorias') != null) {
@@ -28,8 +50,13 @@ export class CategoriaComponent {
 
     cadastrarCategoria(): void {
 
-        if (this.categoria != '') {
-            this.listaCategorias.push(this.categoria);
+      const categoria: Categoria = {
+        nome: this.nome,
+        color: this.color
+      }
+
+        if (this.nome != '') {
+            this.listaCategorias.push(categoria);
             localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
             this.limparInput();
         }
@@ -38,20 +65,20 @@ export class CategoriaComponent {
     removerCategoria(categoriaRm): void {
         this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm), 1);
 
-        for (const j of this.listaTarefas) {   
+        for (let j = 0; j <= this.listaTarefas.length; j++) {
             for (const i of this.listaTarefas) {
-                if (i.categoria == categoriaRm) {
+                if (i.categoria == categoriaRm.nome) {
                     this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);
                 }
             }
         }
-        
+
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
         localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
     }
 
     limparInput(): void {
-        this.categoria = '';
+        this.nome = '';
     }
 
 }

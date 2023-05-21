@@ -120,6 +120,9 @@ header button:hover {
     font-size: 14px;
     font-weight: bold;
     padding: 10px;
-    border: solid black 1px;
 }
 
+.div-categoria-nome {
+  border: solid black 1px;
+  padding: 10px;
+}

@@ -6,13 +6,18 @@ interface Tarefa {
     categoria: string
 }
 
+interface Categoria {
+  nome: string,
+  color: string
+}
+
 @Component({
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css']
 })
 
 export class TodoComponent {
-    listaCategorias: string[] = [];
+    listaCategorias: Categoria[] = [];
     tarefas: Tarefa[] = [];
     categoria: string = '';
     nomeTarefa: string = '';
@@ -42,7 +47,7 @@ export class TodoComponent {
           if (tarefaAdd.nome != '' && tarefaAdd.categoria != '') {
 
               this.listaTarefas.push(tarefaAdd);
-              localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));  
+              localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
             }
         this.limparInput();
     }
@@ -63,7 +68,7 @@ export class TodoComponent {
         tarefa.showCategoria = true;
     }
 
-    
+
 
     limparInput(): void {
         this.nomeTarefa = '';

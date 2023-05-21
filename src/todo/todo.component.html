@@ -5,7 +5,7 @@
     <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa" maxlength="16 ">
 
     <select [(ngModel)]="categoria">
-      <option *ngFor="let opcao of listaCategorias"> {{ opcao }} </option>
+      <option *ngFor="let categoria of listaCategorias"> {{ categoria.nome }} </option>
     </select>
 
   </div>
@@ -16,15 +16,17 @@
 <section class="lista-container">
   <div class="centro">
     <div *ngFor="let categoria of listaCategorias" class="categoria">
-      <p class="title-categoria"> {{ categoria }} </p>
 
+      <div class="div-categoria-nome">
+        <p class="title-categoria" [style.backgroundColor]="categoria.color"> {{ categoria.nome }} </p>
+      </div>
 
       <div *ngFor="let tarefa of listaTarefas">
-        <div *ngIf="tarefa.categoria == categoria" class="card-tarefa">
+        <div *ngIf="tarefa.categoria == categoria.nome" class="card-tarefa">
 
           <div>
             <p class="nome">{{ tarefa.nome }}</p>
-            <p class="categoria">Categoria: <strong>{{ tarefa.categoria }}</strong></p>
+            <p class="categoria"><strong>{{ tarefa.categoria }}</strong></p>
           </div>
 
           <div class="remover-alterar">
@@ -38,7 +40,7 @@
 
             <div *ngIf="tarefa.showCategoria">
               <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
-                <option *ngFor="let categoria of listaCategorias"> {{ categoria }} </option>
+                <option *ngFor="let categoria of listaCategorias"> {{ categoria.nome }} </option>
               </select>
             </div>
           </div>
