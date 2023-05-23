@@ -27,7 +27,6 @@ export class TodoComponent {
     listaTarefas: Tarefa[] = [];
 
     ngOnInit() {
-
         if (localStorage.getItem('listaTarefas') != null) {
             this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
         }

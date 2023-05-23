@@ -10,22 +10,6 @@ interface Categoria {
   color: string
 }
 
-const todo: Categoria = {
-  nome: 'TODO',
-  color: '#cd5c5c'
-}
-
-const doing: Categoria = {
-  nome: 'DOING',
-  color: '#ffff9e'
-}
-
-const done: Categoria = {
-  nome: 'DONE',
-  color: 'lightgreen'
-}
-
-
 @Component({
     templateUrl: './categoria.component.html',
     styleUrls: ['./categoria.component.css']
@@ -33,7 +17,7 @@ const done: Categoria = {
 
 export class CategoriaComponent {
 
-    listaCategorias: Categoria[] = [todo, doing, done];
+    listaCategorias: Categoria[] = [{nome: 'TO-DO', color: '#FF0000'}, {nome: 'DOING', color: '#FFAE00'}, {nome: 'DONE', color: '#16BD00'}];
     listaTarefas: Tarefa[] = [];
     nome: string = '';
     color: string = '#ff9ef7';
