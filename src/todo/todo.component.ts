@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChildren } from "@angular/core";
 
 
 interface Tarefa {
@@ -23,10 +23,13 @@ export class TodoComponent {
     nomeTarefa: string = '';
     categoriaAlt: string = '';
     showCategoria: boolean = false;
-
+    categoriaDrop: string = this.categoria;
+    tarefaDrag: Tarefa = null;
+        
     listaTarefas: Tarefa[] = [];
-
+    
     ngOnInit() {
+
         if (localStorage.getItem('listaTarefas') != null) {
             this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
         }
@@ -74,5 +77,17 @@ export class TodoComponent {
         this.categoria = '';
         this.categoriaAlt = '';
     }
+
+    dragover(e) {
+        this.categoriaDrop = e.nome;
+        this.tarefaDrag.categoria = this.categoriaDrop;
+        localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
+
+      }
+    
+      drag(e) {
+        this.tarefaDrag = e;
+      }
+    
 
 }
