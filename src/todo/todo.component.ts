@@ -79,11 +79,9 @@ export class TodoComponent {
         this.categoriaAlt = '';
     }
 
-    dragover(e: Categoria, event): void {
-        event.preventDefault();
-
+    dragover(e: Categoria): void {
         this.tarefaDrag.categoria = e.nome;
-        
+
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
 
       }
@@ -94,15 +92,6 @@ export class TodoComponent {
 
       getIndex(index: number): void {
         this.indexDrag = index;
-        
-      }
-
-      drop(): void {
-        console.log(this.listaTarefas[this.indexDrag])
-
-        if (this.listaTarefas[this.indexDrag] != this.tarefaDrag) {
-            this.listaTarefas.splice(this.indexDrag+1, 0, this.tarefaDrag)
-        }
       }
 
     
