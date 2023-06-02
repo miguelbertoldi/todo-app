@@ -1,3 +1,4 @@
+import { TagContentType } from "@angular/compiler";
 import { Component, ElementRef, OnInit, ViewChildren } from "@angular/core";
 
 
@@ -23,7 +24,7 @@ export class TodoComponent {
     nomeTarefa: string = '';
     categoriaAlt: string = '';
     showCategoria: boolean = false;
-    categoriaDrop: string = this.categoria;
+    indexDrag: number = 0;
     tarefaDrag: Tarefa = null;
         
     listaTarefas: Tarefa[] = [];
@@ -78,16 +79,33 @@ export class TodoComponent {
         this.categoriaAlt = '';
     }
 
-    dragover(e) {
-        this.categoriaDrop = e.nome;
-        this.tarefaDrag.categoria = this.categoriaDrop;
+    dragover(e: Categoria, event): void {
+        event.preventDefault();
+
+        this.tarefaDrag.categoria = e.nome;
+        
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
 
       }
     
-      drag(e) {
+      drag(e: Tarefa): void {
         this.tarefaDrag = e;
       }
+
+      getIndex(index: number): void {
+        this.indexDrag = index;
+        
+      }
+
+      drop(): void {
+        console.log(this.listaTarefas[this.indexDrag])
+
+        if (this.listaTarefas[this.indexDrag] != this.tarefaDrag) {
+            this.listaTarefas.splice(this.indexDrag+1, 0, this.tarefaDrag)
+        }
+      }
+
     
+
 
 }

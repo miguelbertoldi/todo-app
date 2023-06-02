@@ -16,16 +16,18 @@
 <section class="lista-container">
   <div class="centro">
     <div *ngFor="let categoria of listaCategorias" class="categoria"
-    (dragover)="dragover(categoria)">
+    (dragover)="dragover(categoria, $event)"
+    (drop)="drop()">
 
       <div class="div-categoria-nome">
         <p class="title-categoria" [style.backgroundColor]="categoria.color"> {{ categoria.nome }} </p>
       </div>
 
-      <div *ngFor="let tarefa of listaTarefas">
+      <div *ngFor="let tarefa of listaTarefas; index as index">
         <div *ngIf="tarefa.categoria == categoria.nome" class="card-tarefa"       
         draggable="true" 
-        (dragstart)="drag(tarefa)">
+        (dragstart)="drag(tarefa)"
+        (drop)="getIndex(index)">
 
           <div>
             <p class="nome">{{ tarefa.nome }}</p>
