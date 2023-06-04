@@ -104,6 +104,7 @@ export class TodoComponent {
       }
 
       ajustarPosicao(): void {
+        
         for (const i of this.listaTarefas) {
           if (i == this.tarefaDrag) {
             this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);
