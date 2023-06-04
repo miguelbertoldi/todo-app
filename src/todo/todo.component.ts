@@ -1,5 +1,5 @@
 import { TagContentType } from "@angular/compiler";
-import { Component, ElementRef, OnInit, ViewChildren } from "@angular/core";
+import { Component, ElementRef, Input, OnInit, ViewChildren } from "@angular/core";
 
 
 interface Tarefa {
@@ -29,6 +29,7 @@ export class TodoComponent {
     categoriaDrop: string = '';
 
     listaTarefas: Tarefa[] = [];
+
 
     ngOnInit() {
 
@@ -104,7 +105,7 @@ export class TodoComponent {
       }
 
       ajustarPosicao(): void {
-        
+
         for (const i of this.listaTarefas) {
           if (i == this.tarefaDrag) {
             this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);

@@ -1,131 +1,135 @@
 header {
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 header input {
-    width: 200px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid black 2px;
-    padding-left: 12px;
-    margin-right: 3px;
-    margin-top: 5px;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: solid black 2px;
+  padding-left: 12px;
+  margin-right: 3px;
+  margin-top: 5px;
 }
 
 header select {
-    margin-top: 10px;
-    width: 80px;
-    height: 35px;
-    border-radius: 10px;
-    border: solid black 2px;
-    cursor: pointer;
+  margin-top: 10px;
+  width: 80px;
+  height: 35px;
+  border-radius: 10px;
+  border: solid black 2px;
+  cursor: pointer;
 }
 
 header button {
-    margin-top: 3px;
-    width: 300px;
-    background-color: black;
-    color: white;
-    height: 28px;
-    border-radius: 7px;
-    border: solid transparent 2px;
-    cursor: pointer;
+  margin-top: 3px;
+  width: 300px;
+  background-color: black;
+  color: white;
+  height: 28px;
+  border-radius: 7px;
+  border: solid transparent 2px;
+  cursor: pointer;
 }
 
 header button:hover {
-    background-color: white;
-    color: black;
-    border: solid black 2px;
-    transition: 0.3s;
+  background-color: white;
+  color: black;
+  border: solid black 2px;
+  transition: 0.3s;
 }
 
 .lista-container {
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .card-tarefa {
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
-    -moz-box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
-    box-shadow: 0px 0px 5px 1px rgba(194,194,194,1);
-    width: 220px;
-    height: 120px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 15px 0;
-    background-color: white;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+  width: 220px;
+  height: 120px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+  background-color: white;
+  border-radius: 4px;
 }
 
-
 .centro {
-    width: 700px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .title-tarefa {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.nome{
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 8px;
-    margin-bottom: 20px;
+.nome {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
 
 .categoria {
-    font-size: 13px;
-    width: 220px;
+  font-size: 13px;
+  width: 220px;
 }
 
 .remover-alterar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
 }
 
 .remover-alterar button {
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    padding-bottom: 7px;
-    color: rgb(104, 104, 104);
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  padding-bottom: 7px;
+  color: rgb(104, 104, 104);
+  cursor: pointer;
 }
 
 .remover-alterar select {
-    height: 25px;
-    width: 100px;
+  height: 25px;
+  width: 100px;
 }
 
 .remover-alterar button:hover {
-    background-color: darkgrey;
-    background-color: rgba(161, 161, 161, 0.5);
-    transition: 0.3s;
+  background-color: darkgrey;
+  background-color: rgba(161, 161, 161, 0.5);
+  transition: 0.3s;
 }
 
 .title-categoria {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 5px;
 }
 
 .div-categoria-nome {
-  border: solid black 1px;
-  padding: 10px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  padding: 8px;
+  border-radius: 5px;
 }

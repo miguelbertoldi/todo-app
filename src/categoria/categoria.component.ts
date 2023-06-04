@@ -20,16 +20,17 @@ export class CategoriaComponent {
     listaCategorias: Categoria[] = [{nome: 'TO-DO', color: '#FF0000'}, {nome: 'DOING', color: '#FFAE00'}, {nome: 'DONE', color: '#16BD00'}];
     listaTarefas: Tarefa[] = [];
     nome: string = '';
-    color: string = '#ff9ef7';
+    color: string = '#ffffff';
 
     ngOnInit() {
-        if (localStorage.getItem('listaCategorias') != null) {
-            this.listaCategorias = JSON.parse(localStorage.getItem('listaCategorias'));
-        }
 
-        if (localStorage.getItem('listaTarefas') != null) {
-            this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
-        }
+      if (localStorage.getItem('listaCategorias') != null) {
+        this.listaCategorias = JSON.parse(localStorage.getItem('listaCategorias'));
+      }
+
+      if (localStorage.getItem('listaTarefas') != null) {
+        this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
+      }
     }
 
     cadastrarCategoria(): void {
@@ -64,5 +65,6 @@ export class CategoriaComponent {
     limparInput(): void {
         this.nome = '';
     }
+
 
 }
