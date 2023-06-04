@@ -26,9 +26,10 @@ export class TodoComponent {
     showCategoria: boolean = false;
     indexDrag: number = 0;
     tarefaDrag: Tarefa = null;
-        
+    categoriaDrop: string = '';
+
     listaTarefas: Tarefa[] = [];
-    
+
     ngOnInit() {
 
         if (localStorage.getItem('listaTarefas') != null) {
@@ -79,22 +80,41 @@ export class TodoComponent {
         this.categoriaAlt = '';
     }
 
-    dragover(e: Categoria): void {
-        this.tarefaDrag.categoria = e.nome;
+    dragover(categoria: Categoria, event: Event): void {
+        event.preventDefault();
+        this.categoriaDrop = categoria.nome;
 
-        localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
 
       }
-    
-      drag(e: Tarefa): void {
-        this.tarefaDrag = e;
+
+      drag(tarefa: Tarefa): void {
+        this.tarefaDrag = tarefa;
       }
 
-      getIndex(index: number): void {
+      getIndex(index: number, event: Event): void {
+        event.preventDefault();
         this.indexDrag = index;
       }
 
-    
+      drop(event: Event) {
+        event.preventDefault();
+        this.tarefaDrag.categoria = this.categoriaDrop;
+
+        this.ajustarPosicao();
+      }
+
+      ajustarPosicao(): void {
+        for (const i of this.listaTarefas) {
+          if (i == this.tarefaDrag) {
+            this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);
+          }
+        }
+
+        this.listaTarefas.splice(this.indexDrag, 0, this.tarefaDrag);
+        localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
+      }
+
+
 
 
 }
