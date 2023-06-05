@@ -1,5 +1,5 @@
 import { SlicePipe } from '@angular/common';
-import { Component, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
