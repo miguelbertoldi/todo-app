@@ -40,11 +40,26 @@ export class CategoriaComponent {
         color: this.color
       }
 
+      if (this.verificar()) {
         if (this.nome != '') {
-            this.listaCategorias.push(categoria);
-            localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
-            this.limparInput();
+          this.listaCategorias.push(categoria);
+          localStorage.setItem('listaCategorias', JSON.stringify(this.listaCategorias));
         }
+      } else {
+        alert('Categoria já cadastrada!')
+      }
+      this.limparInput();
+    }
+
+    verificar(): boolean {
+
+      for (const i of this.listaCategorias) {
+        if (i.nome === this.nome) {
+          return false;
+        }
+      }
+
+      return true;
     }
 
     removerCategoria(categoriaRm): void {
