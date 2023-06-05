@@ -65,12 +65,11 @@ export class CategoriaComponent {
     removerCategoria(categoriaRm): void {
         this.listaCategorias.splice(this.listaCategorias.indexOf(categoriaRm), 1);
 
-        for (let j = 0; j <= this.listaTarefas.length; j++) {
-            for (const i of this.listaTarefas) {
-                if (i.categoria == categoriaRm.nome) {
-                    this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);
-                }
-            }
+          for (const i of this.listaTarefas) {
+              if (i.categoria == categoriaRm.nome) {
+                  this.listaTarefas.splice(this.listaTarefas.indexOf(i), this.listaTarefas.length);
+              }
+
         }
 
         localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
