@@ -106,6 +106,7 @@ export class TodoComponent {
   getIndex(index: number, event: Event): void {
     event.preventDefault();
     this.indexDrag = index;
+    console.log(index)
   }
 
   drop(event: Event) {
@@ -117,13 +118,9 @@ export class TodoComponent {
 
   ajustarPosicao(): void {
 
-    for (const i of this.listaTarefas) {
-      if (i == this.tarefaDrag) {
-        this.listaTarefas.splice(this.listaTarefas.indexOf(i), 1);
-      }
-    }
-
+    this.listaTarefas.splice(this.listaTarefas.indexOf(this.tarefaDrag), 1);
     this.listaTarefas.splice(this.indexDrag, 0, this.tarefaDrag);
+    
     this.addLocalStorage();
   }
 
