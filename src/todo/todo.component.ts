@@ -8,7 +8,7 @@ interface Tarefa {
 interface Propriedade {
   nome: string,
   tipo: string,
-  dado: string | number | string[]
+  dado: string | number | string[],
 }
 
 @Component({
@@ -17,17 +17,21 @@ interface Propriedade {
 })
 
 export class TodoComponent {
+
   listaProps: Propriedade[];
-  tarefas: Tarefa[] = [];
-  propriedade: Propriedade;
+  listaTarefas: Tarefa[] = [];
+
+  propriedade: string;
+  prop: Propriedade;
+
   nomeTarefa: string = '';
-  categoriaAlt: string = '';
   showCategoria: boolean = false;
+
   indexDrag: number = 0;
   tarefaDrag: Tarefa = null;
   propriedadeDrop: Propriedade;
 
-  listaTarefas: Tarefa[] = [];
+
 
 
   ngOnInit() {
@@ -43,95 +47,64 @@ export class TodoComponent {
 
   cadastrarTarefa(): void {
 
+    for (const i of this.listaProps) {
+      if (i.nome == this.propriedade) {
+        this.prop = i;
+      }
+    }
+
+    console.log(this.propriedade)
+    
     const tarefaAdd: Tarefa = {
       nome: this.nomeTarefa,
-      propriedade: this.propriedade
+      propriedade: this.prop
+      
     }
+    console.log(this.propriedade);
 
     console.log(tarefaAdd)
 
-    if (this.verificar()) {
-
-      if (tarefaAdd.nome != '') {
-        this.listaTarefas.push(tarefaAdd);
-        this.addLocalStorage();
-
-      }
-    } else {
-      alert('Tarefa já cadastrada!')
-    }
-    console.log(this.listaProps)
     this.limparInput();
   }
 
-  verificar(): boolean {
-    for (const i of this.listaTarefas) {
-      if (i.nome === this.nomeTarefa) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  removerTarefa(tarefa): void {
-    this.listaTarefas.splice(this.listaTarefas.indexOf(tarefa), 1);
-    this.addLocalStorage();
-  }
-
-  alterarCategoria(tarefa): void {
-    tarefa.categoria = this.categoriaAlt;
-    tarefa.showCategoria = false;
-    this.addLocalStorage();
-    this.limparInput();
-  }
-
-  showCategoriaFunc(tarefa): void {
-    tarefa.showCategoria = true;
-  }
 
   limparInput(): void {
     this.nomeTarefa = '';
-    this.categoriaAlt = '';
   }
 
 
   // DRAG N DROP
 
-  dragover(propriedade: Propriedade, event: Event): void {
-    event.preventDefault();
-    this.propriedadeDrop = propriedade;
-    console.log(propriedade)
-
-  }
-
-  drag(tarefa: Tarefa): void {
+  drag (tarefa: Tarefa): void {
     this.tarefaDrag = tarefa;
-    console.log(tarefa)
   }
 
-  getIndex(index: number, event: Event): void {
+  dragover (event: Event, prop: Propriedade): void {
+    event.preventDefault();
+    this.propriedadeDrop = prop;
+  }
+
+  getIndex (event: Event, index: number): void {
     event.preventDefault();
     this.indexDrag = index;
-    console.log(index)
   }
 
-  drop(event: Event) {
+  drop (event: Event): void {
     event.preventDefault();
+
     this.tarefaDrag.propriedade = this.propriedadeDrop;
 
-    this.ajustarPosicao();
-  }
-
-  ajustarPosicao(): void {
-
-    this.listaTarefas.splice(this.listaTarefas.indexOf(this.tarefaDrag), 1);
-    this.listaTarefas.splice(this.indexDrag, 0, this.tarefaDrag);
-    
     this.addLocalStorage();
   }
+  
 
   addLocalStorage(): void {
     localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
+  }
+
+  teste(prop, tarefa) {
+    console.log(prop)
+    console.log(tarefa.prop)
   }
 
 }

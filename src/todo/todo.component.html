@@ -14,43 +14,20 @@
 </header>
 
 <section class="lista-container">
-  <div class="centro">
-    <div *ngFor="let prop of listaProps" class="categoria"
-    (dragover)="dragover(prop, $event)"
+  <div *ngFor="let prop of listaProps">
+    <div (dragover)="dragover($event, prop)"
     (drop)="drop($event)">
+      <p>{{ prop.nome }}</p>
+    
 
-      <div class="div-categoria-nome">
-        <p class="title-categoria"> {{ prop.nome }} </p>
+    <div *ngFor="let tarefa of listaTarefas; index as index">
+      <div *ngIf="tarefa.propriedade.nome == prop.nome" draggable="true" 
+      (dragstart)="drag(tarefa)" (drop)="getIndex($event, index)">
+
+        {{ tarefa.nome }}
+        <button (click)="teste(prop, tarefa)"></button>
       </div>
-
-      <div *ngFor="let tarefa of listaTarefas; index as index">
-        <div *ngIf="tarefa.propriedade == prop.nome" class="card-tarefa"
-        draggable="true"
-        (dragstart)="drag(tarefa)"
-        (drop)="getIndex(index, $event)">
-
-          <div>
-            <p class="nome">{{ tarefa.nome }}</p>
-            <p class="categoria"><strong>{{ tarefa.prop }}</strong></p>
-          </div>
-
-          <div class="remover-alterar">
-
-            <button (click)="removerTarefa(tarefa)">Remover</button>
-
-            <div *ngIf="!tarefa.showCategoria">
-              <button (click)="showCategoriaFunc(tarefa)">Alterar categoria</button>
-            </div>
-
-
-            <div *ngIf="tarefa.showCategoria">
-              <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
-                <option *ngFor="let categoria of listaCategorias"> {{ prop.nome }} </option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
     </div>
   </div>
 </section>

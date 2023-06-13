@@ -37,6 +37,7 @@ export class CategoriaComponent {
   inputCategoria: boolean = false;
   categoriaAdd: string;
 
+
   ngOnInit() {
 
     if (localStorage.getItem('listaTarefas') != null) {
@@ -56,8 +57,6 @@ export class CategoriaComponent {
   cadastrarCategoria (prop): void {
 
     prop.dado.push(this.categoriaAdd)
-    console.log(prop)
-    console.log(prop.dado)
     localStorage.setItem('listaProps', JSON.stringify(this.listaProps))
   }
   
