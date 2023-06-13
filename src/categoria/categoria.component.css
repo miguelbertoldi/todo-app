@@ -87,19 +87,3 @@ header button:hover {
   gap: 5px;
 }
 
-.item-categoria button {
-  text-align: center;
-  font-weight: bold;
-  height: 35px;
-  width: 40px;
-  color: white;
-  background-color: red;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.item-categoria button:hover {
-  background-color: darkred;
-  transition: 0.2s;
-}
