@@ -4,8 +4,8 @@
   <div>
     <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa" maxlength="16">
 
-    <select [(ngModel)]="categoria">
-      <option *ngFor="let categoria of listaCategorias"> {{ categoria.nome }} </option>
+    <select [(ngModel)]="propriedade">
+      <option *ngFor="let prop of listaProps"> {{ prop.nome }} </option>
     </select>
 
   </div>
@@ -15,23 +15,23 @@
 
 <section class="lista-container">
   <div class="centro">
-    <div *ngFor="let categoria of listaCategorias" class="categoria"
-    (dragover)="dragover(categoria, $event)"
+    <div *ngFor="let prop of listaProps" class="categoria"
+    (dragover)="dragover(prop, $event)"
     (drop)="drop($event)">
 
       <div class="div-categoria-nome">
-        <p class="title-categoria" [style.backgroundColor]="categoria.color"> {{ categoria.nome }} </p>
+        <p class="title-categoria"> {{ prop.nome }} </p>
       </div>
 
       <div *ngFor="let tarefa of listaTarefas; index as index">
-        <div *ngIf="tarefa.categoria == categoria.nome" class="card-tarefa"
+        <div *ngIf="tarefa.propriedade == prop.nome" class="card-tarefa"
         draggable="true"
         (dragstart)="drag(tarefa)"
         (drop)="getIndex(index, $event)">
 
           <div>
             <p class="nome">{{ tarefa.nome }}</p>
-            <p class="categoria"><strong>{{ tarefa.categoria }}</strong></p>
+            <p class="categoria"><strong>{{ tarefa.prop }}</strong></p>
           </div>
 
           <div class="remover-alterar">
@@ -45,7 +45,7 @@
 
             <div *ngIf="tarefa.showCategoria">
               <select (change)="alterarCategoria(tarefa)" [(ngModel)]="categoriaAlt">
-                <option *ngFor="let categoria of listaCategorias"> {{ categoria.nome }} </option>
+                <option *ngFor="let categoria of listaCategorias"> {{ prop.nome }} </option>
               </select>
             </div>
           </div>

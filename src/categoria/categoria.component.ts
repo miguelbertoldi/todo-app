@@ -90,6 +90,7 @@ export class CategoriaComponent {
 
   cancelar (prop): void {
     prop.showInput = false;
+    localStorage.setItem('listaProps', JSON.stringify(this.listaProps));
   } 
 
 

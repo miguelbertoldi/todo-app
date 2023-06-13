@@ -2,12 +2,13 @@ import { Component, OnInit } from "@angular/core";
 
 interface Tarefa {
   nome: string,
-  categoria: string
+  propriedade: Propriedade
 }
 
-interface Categoria {
+interface Propriedade {
   nome: string,
-  color: string
+  tipo: string,
+  dado: string | number | string[]
 }
 
 @Component({
@@ -16,15 +17,15 @@ interface Categoria {
 })
 
 export class TodoComponent {
-  listaCategorias: Categoria[] = [];
+  listaProps: Propriedade[];
   tarefas: Tarefa[] = [];
-  categoria: string = '';
+  propriedade: Propriedade;
   nomeTarefa: string = '';
   categoriaAlt: string = '';
   showCategoria: boolean = false;
   indexDrag: number = 0;
   tarefaDrag: Tarefa = null;
-  categoriaDrop: string = '';
+  propriedadeDrop: Propriedade;
 
   listaTarefas: Tarefa[] = [];
 
@@ -35,8 +36,8 @@ export class TodoComponent {
       this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
     }
 
-    if (localStorage.getItem('listaCategorias') != null) {
-      this.listaCategorias = JSON.parse(localStorage.getItem('listaCategorias'));
+    if (localStorage.getItem('listaProps') != null) {
+      this.listaProps = JSON.parse(localStorage.getItem('listaProps'));
     }
   }
 
@@ -44,12 +45,14 @@ export class TodoComponent {
 
     const tarefaAdd: Tarefa = {
       nome: this.nomeTarefa,
-      categoria: this.categoria
+      propriedade: this.propriedade
     }
+
+    console.log(tarefaAdd)
 
     if (this.verificar()) {
 
-      if (tarefaAdd.nome != '' && tarefaAdd.categoria != '') {
+      if (tarefaAdd.nome != '') {
         this.listaTarefas.push(tarefaAdd);
         this.addLocalStorage();
 
@@ -57,6 +60,7 @@ export class TodoComponent {
     } else {
       alert('Tarefa já cadastrada!')
     }
+    console.log(this.listaProps)
     this.limparInput();
   }
 
@@ -87,20 +91,22 @@ export class TodoComponent {
 
   limparInput(): void {
     this.nomeTarefa = '';
-    this.categoria = '';
     this.categoriaAlt = '';
   }
 
 
   // DRAG N DROP
 
-  dragover(categoria: Categoria, event: Event): void {
+  dragover(propriedade: Propriedade, event: Event): void {
     event.preventDefault();
-    this.categoriaDrop = categoria.nome;
+    this.propriedadeDrop = propriedade;
+    console.log(propriedade)
+
   }
 
   drag(tarefa: Tarefa): void {
     this.tarefaDrag = tarefa;
+    console.log(tarefa)
   }
 
   getIndex(index: number, event: Event): void {
@@ -111,7 +117,7 @@ export class TodoComponent {
 
   drop(event: Event) {
     event.preventDefault();
-    this.tarefaDrag.categoria = this.categoriaDrop;
+    this.tarefaDrag.propriedade = this.propriedadeDrop;
 
     this.ajustarPosicao();
   }
