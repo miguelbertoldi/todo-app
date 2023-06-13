@@ -55,12 +55,9 @@ export class CategoriaComponent {
   
   cadastrarCategoria (prop): void {
 
-    this.listaCategorias.push(this.categoriaAdd);
-    prop.dado = this.listaCategorias;
+    prop.dado.push(this.categoriaAdd)
+    console.log(prop)
     console.log(prop.dado)
-    console.log(this.categoriaAdd)
-
-    this.categoriaAdd = '';
     localStorage.setItem('listaProps', JSON.stringify(this.listaProps))
   }
   
