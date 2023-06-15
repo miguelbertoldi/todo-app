@@ -1,42 +1,38 @@
 <header>
-  <h1>Propriedades</h1>
+  <div>
+    <div class="inputs">
+      <input placeholder="Digite o nome..." />
+      <select>
+        <option> (( propriedade.nome )) </option>
+      </select> 
+    </div>
 
-  <div class="inputs">
-    <input [(ngModel)]="nome" placeholder="Digite o nome da propriedade" maxlength="16"/>
-    <div class="input-color-div">
-
-      <select [(ngModel)]="tipo">
-        <option *ngFor="let tipos of listaTipos"> {{ tipos }} </option>
-      </select>
-
-
+    <div>
+      <button>Cadastrar</button>
     </div>
   </div>
-
-  <button (click)="cadastrarPropriedade()">Cadastrar</button>
 </header>
 
-<section class="lista-container">
-  <div class="colunas-item">
-    <div *ngFor="let prop of listaProps" class="item-categoria">
+<main>
+  <section class="container-geral">
+
+    <div>
+      <p>(( propriedade.nome ))</p>
+
       <div>
-        <p>{{ prop.nome }} | {{ prop.tipo }}</p>
-        <div style="font-size: 10px;" *ngFor="let dado of prop.dado"> 
-          <p>{{ dado }} </p> 
+        <div>
+
+          <div class="prop-title">
+            
+          </div>
+
+          <div class="prop-buttons">
+
+          </div>
+
         </div>
-
-        <input *ngIf="prop.showInput && prop.tipo == 'Seleção'" [(ngModel)]="categoriaAdd" /> 
-        
-        <div *ngIf="prop.showInput && prop.tipo == 'Seleção'">
-          <button (click)="cadastrarCategoria(prop)">Adicionar</button>
-          <button (click)="cancelar(prop)">Cancelar</button>
-        </div>  
-        <button *ngIf="!prop.showInput && prop.tipo == 'Seleção'" style="font-size: 10px; " (click)="showInput(prop)">Adicionar item</button>
-      </div>
-
-      <div>
-        <button (click)="removerPropriedade(prop)">x</button>
       </div>
     </div>
-  </div>
-</section>
+
+  </section>
+</main>
