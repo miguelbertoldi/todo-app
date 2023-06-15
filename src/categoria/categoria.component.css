@@ -27,6 +27,50 @@ main {
 }
 
 .container-geral {
-
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
+
+.card {
+  width: 200px;
+  min-height: 80px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.card-text {
+  width: 100%;
+  height: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-text p:first-child {
+  font-size: 25px;
+}
+
+.prop-content {
+  font-size: 13px;
+  padding: 15px;
+  width: 100%;
+  height: 45%;
+}
+
+.prop-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+  height: 23%;
+}
+
+
 

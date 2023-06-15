@@ -1,14 +1,14 @@
 <header>
   <div>
     <div class="inputs">
-      <input placeholder="Digite o nome..." />
-      <select>
-        <option> (( propriedade.nome )) </option>
-      </select> 
+      <input placeholder="Digite o nome..." [(ngModel)]="nome" />
+      <select [(ngModel)]="tipo">
+        <option *ngFor="let tipo of listaTipos"> {{ tipo }} </option>
+      </select>
     </div>
 
     <div>
-      <button>Cadastrar</button>
+      <button (click)="cadastrarPropriedade()">Cadastrar</button>
     </div>
   </div>
 </header>
@@ -16,21 +16,33 @@
 <main>
   <section class="container-geral">
 
-    <div>
-      <p>(( propriedade.nome ))</p>
-
-      <div>
-        <div>
-
-          <div class="prop-title">
-            
-          </div>
-
-          <div class="prop-buttons">
-
-          </div>
-
+    <div *ngFor="let prop of listaProps">
+      <div class="card">
+        <div class="card-text">
+          <p>{{ prop.nome }}</p>
+          <p>{{ prop.tipo }}</p>
         </div>
+
+        <div class="prop-content" *ngIf="prop.tipo === 'Seleção'">
+          <ul>
+            <li *ngFor="let item of prop.conteudo"> {{ item }} </li>
+          </ul>
+        </div>
+
+        <div class="prop-buttons">
+          
+          <div *ngIf="prop.tipo === 'Seleção' && !prop.inputAdd">
+            <button (click)="mostraInput(prop)">Editar</button>
+          </div>
+          <button *ngIf="!prop.inputAdd" (click)="removerPropriedade(prop)">Remover</button>
+
+          <div *ngIf="prop.inputAdd" class="prop-input">
+            <input [(ngModel)]="conteudo" />
+            <button (click)="adicionarItem(prop)">Adicionar</button>
+            <button (click)="mostraInput(prop)">Cancelar</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
