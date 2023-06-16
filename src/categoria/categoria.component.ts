@@ -16,7 +16,7 @@ export class CategoriaComponent {
 
   nome: string;
   tipo: string;
-  conteudo: string | number;
+  conteudo: string;
   listaTipos: string[] = ['Texto', 'Número', 'Seleção'];
   listaProps: Propriedade[] = [];
 
@@ -28,15 +28,14 @@ export class CategoriaComponent {
 
   cadastrarPropriedade (): void {
 
-      const newProp: Propriedade = {
+      const prop: Propriedade = {
         nome: this.nome,
         tipo: this.tipo,
         conteudo: this.conteudo,
         inputAdd: false
       }
 
-
-    this.listaProps.push(newProp);
+    this.listaProps.push(prop);
     this.localStorage();
   }
 
@@ -46,11 +45,20 @@ export class CategoriaComponent {
   }
 
   adicionarItem (prop: Propriedade): void {
-
+    if (Array.isArray(prop.conteudo)){
       prop.conteudo.push(this.conteudo);
+    }
+
       prop.inputAdd = !prop.inputAdd;
       this.localStorage();
+  }
 
+  removerItem (item: string, prop: Propriedade): void {
+
+    if (Array.isArray(prop.conteudo)){
+      prop.conteudo.splice(prop.conteudo.indexOf(item), 1);
+    }
+    this.localStorage();
   }
 
   mostraInput (prop: Propriedade): void {
@@ -60,10 +68,5 @@ export class CategoriaComponent {
   localStorage (): void {
     localStorage.setItem('listaProps', JSON.stringify(this.listaProps));
   }
-
-
-
-
-
 
 }
