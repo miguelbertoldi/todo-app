@@ -107,7 +107,7 @@ export class TodoComponent {
     }
 
     this.tarefaDrag.propriedades = this.propDrag;
-    this.listaTarefas.splice(this.indexTarefaDrag, 1);
+    this.listaTarefas.splice(this.listaTarefas.indexOf(this.tarefaDrag), 1);
     this.listaTarefas.splice(this.indexTarefaDrag, 0, this.tarefaDrag);
 
   }
