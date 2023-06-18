@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 interface Tarefa {
   nome: string,
@@ -54,11 +54,11 @@ export class TodoComponent {
     }
 
     console.log(this.propriedade)
-    
+
     const tarefaAdd: Tarefa = {
       nome: this.nomeTarefa,
       propriedade: this.prop
-      
+
     }
     console.log(this.propriedade);
 
@@ -96,7 +96,7 @@ export class TodoComponent {
 
     this.addLocalStorage();
   }
-  
+
 
   addLocalStorage(): void {
     localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));

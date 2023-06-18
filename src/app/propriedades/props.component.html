@@ -23,24 +23,25 @@
           <p>{{ prop.tipo }}</p>
         </div>
 
-        <div class="prop-content" *ngIf="prop.tipo === 'Seleção'">
+        <div class="prop-content" *ngIf="prop.tipo === 'Seleção'"
+        [ngClass]="{'prop-content-padding': prop.conteudo?.length > 0}">
           <ul>
-            <li *ngFor="let item of prop.conteudo"> 
-              <div>{{ item }}</div> 
-              <div *ngIf="prop.inputAdd"> <button (click)="removerItem(item, prop)">x</button> </div> 
+            <li *ngFor="let item of prop.conteudo">
+              <div>{{ item }}</div>
+              <div *ngIf="prop.inputAdd"> <button (click)="removerItem(item, prop)">x</button> </div>
             </li>
           </ul>
         </div>
 
         <div class="prop-buttons">
-          
+
           <div *ngIf="prop.tipo === 'Seleção' && !prop.inputAdd">
             <button (click)="mostraInput(prop)">Editar</button>
           </div>
           <button *ngIf="!prop.inputAdd" (click)="removerPropriedade(prop)">Remover</button>
 
           <div *ngIf="prop.inputAdd" class="prop-input">
-            <input [(ngModel)]="conteudo" placeholder="Nome do item..." />
+            <input [(ngModel)]="conteudo" placeholder="Nome do item..." maxlength="16" />
             <button (click)="adicionarItem(prop)">Adicionar</button>
             <button (click)="mostraInput(prop)">Cancelar</button>
           </div>

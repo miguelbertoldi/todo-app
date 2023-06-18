@@ -60,6 +60,14 @@ main {
 
 .prop-content {
   font-size: 13px;
+  padding: 0;
+  width: 100%;
+  height: 45%;
+}
+
+.prop-content-padding {
+  min-height: 0px;
+  font-size: 13px;
   padding: 15px;
   width: 100%;
   height: 45%;
@@ -85,6 +93,14 @@ main {
   gap: 3px;
   width: 100%;
   height: 23%;
+}
+
+.prop-buttons button {
+  padding: 2px;
+}
+
+.prop-input input{
+  margin: 5px;
 }
 
 

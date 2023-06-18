@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 interface Propriedade {
   nome: string,
@@ -8,11 +8,11 @@ interface Propriedade {
 }
 
 @Component({
-  templateUrl: './categoria.component.html',
-  styleUrls: ['./categoria.component.css']
+  templateUrl: './props.component.html',
+  styleUrls: ['./props.component.css']
 })
 
-export class CategoriaComponent {
+export class PropsComponent {
 
   nome: string;
   tipo: string;
@@ -22,18 +22,32 @@ export class CategoriaComponent {
 
   ngOnInit() {
     if (localStorage.getItem('listaProps') != null) {
-      this.listaProps = JSON.parse(localStorage.getItem('listaProps')); 
+      this.listaProps = JSON.parse(localStorage.getItem('listaProps'));
+    }
+
+    for (const i of this.listaProps) {
+      i.inputAdd = false;
     }
   }
 
   cadastrarPropriedade (): void {
+    let prop: Propriedade;
 
-      const prop: Propriedade = {
+    if (this.tipo === 'Seleção') {
+      prop = {
+        nome: this.nome,
+        tipo: this.tipo,
+        conteudo: [],
+        inputAdd: false
+      }
+    } else {
+      prop = {
         nome: this.nome,
         tipo: this.tipo,
         conteudo: this.conteudo,
         inputAdd: false
       }
+    }
 
     this.listaProps.push(prop);
     this.localStorage();
@@ -45,11 +59,12 @@ export class CategoriaComponent {
   }
 
   adicionarItem (prop: Propriedade): void {
+    console.log(prop.conteudo)
     if (Array.isArray(prop.conteudo)){
       prop.conteudo.push(this.conteudo);
+      this.conteudo = '';
     }
 
-      prop.inputAdd = !prop.inputAdd;
       this.localStorage();
   }
 
@@ -57,6 +72,7 @@ export class CategoriaComponent {
 
     if (Array.isArray(prop.conteudo)){
       prop.conteudo.splice(prop.conteudo.indexOf(item), 1);
+      this.conteudo = '';
     }
     this.localStorage();
   }
