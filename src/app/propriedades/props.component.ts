@@ -3,8 +3,8 @@ import { Component } from "@angular/core";
 interface Propriedade {
   nome: string,
   tipo: string,
-  conteudo: string[] | string | number,
-  inputAdd: boolean
+  itens ?: string[],
+  inputAdd ?: boolean
 }
 
 @Component({
@@ -16,7 +16,7 @@ export class PropsComponent {
 
   nome: string;
   tipo: string;
-  conteudo: string;
+  item: string;
   listaTipos: string[] = ['Texto', 'Número', 'Seleção'];
   listaProps: Propriedade[] = [];
 
@@ -37,15 +37,13 @@ export class PropsComponent {
       prop = {
         nome: this.nome,
         tipo: this.tipo,
-        conteudo: [],
+        itens: [],
         inputAdd: false
       }
     } else {
       prop = {
         nome: this.nome,
         tipo: this.tipo,
-        conteudo: this.conteudo,
-        inputAdd: false
       }
     }
 
@@ -59,10 +57,10 @@ export class PropsComponent {
   }
 
   adicionarItem (prop: Propriedade): void {
-    console.log(prop.conteudo)
-    if (Array.isArray(prop.conteudo)){
-      prop.conteudo.push(this.conteudo);
-      this.conteudo = '';
+    console.log(prop.itens)
+    if (Array.isArray(prop.itens)){
+      prop.itens.push(this.item);
+      this.item = '';
     }
 
       this.localStorage();
@@ -70,9 +68,9 @@ export class PropsComponent {
 
   removerItem (item: string, prop: Propriedade): void {
 
-    if (Array.isArray(prop.conteudo)){
-      prop.conteudo.splice(prop.conteudo.indexOf(item), 1);
-      this.conteudo = '';
+    if (Array.isArray(prop.itens)){
+      prop.itens.splice(prop.itens.indexOf(item), 1);
+      this.item = '';
     }
     this.localStorage();
   }

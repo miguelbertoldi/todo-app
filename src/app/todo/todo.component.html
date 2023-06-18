@@ -1,33 +1,42 @@
 <header>
-  <h1>Tarefas</h1>
-
   <div>
-    <input [(ngModel)]="nomeTarefa" placeholder="Digite o nome da tarefa" maxlength="16">
+    <div class="inputs">
+      <input placeholder="Digite o nome..." [(ngModel)]="nome" />
+      <select [(ngModel)]="prop">
+        <option *ngFor="let prop of listaProps">{{ prop.nome }}</option>
+      </select>
+    </div>
 
-    <select [(ngModel)]="propriedade">
-      <option *ngFor="let prop of listaProps"> {{ prop.nome }} </option>
-    </select>
-
+    <div>
+      <button (click)="cadastrarTarefa()">Cadastrar</button>
+    </div>
   </div>
-  <button (click)="cadastrarTarefa()">Cadastrar</button>
-
 </header>
 
-<section class="lista-container">
-  <div *ngFor="let prop of listaProps">
-    <div (dragover)="dragover($event, prop)"
-    (drop)="drop($event)">
-      <p>{{ prop.nome }}</p>
-    
+<main>
+  <section class="container-geral">
 
-    <div *ngFor="let tarefa of listaTarefas; index as index">
-      <div *ngIf="tarefa.propriedade.nome == prop.nome" draggable="true" 
-      (dragstart)="drag(tarefa)" (drop)="getIndex($event, index)">
+    <div *ngFor="let prop of listaProps">
 
-        {{ tarefa.nome }}
-        <button (click)="teste(prop, tarefa)"></button>
+      <div class="prop-title">
+        <p>{{ prop.nome }}</p>
       </div>
+
+      <div *ngFor="let tarefa of listaTarefas" class="card">
+        <div *ngIf="tarefa.propriedades?.nome === prop.nome">
+
+          <div class="card-title">
+            <p>{{ tarefa.nome }}</p>
+          </div>
+
+          <div class="card-prop-content">
+            <p></p>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>

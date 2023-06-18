@@ -1,59 +1,38 @@
-header {
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-header input {
-  width: 200px;
-  height: 30px;
-  border-radius: 10px;
-  border: solid black 2px;
-  padding-left: 12px;
-  margin-right: 3px;
-  margin-top: 5px;
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header select {
-  margin-top: 10px;
   width: 80px;
-  height: 35px;
-  border-radius: 10px;
-  border: solid black 2px;
-  cursor: pointer;
 }
 
 header button {
-  margin-top: 3px;
-  width: 300px;
-  background-color: black;
-  color: white;
-  height: 28px;
-  border-radius: 7px;
-  border: solid transparent 2px;
-  cursor: pointer;
-}
-
-header button:hover {
-  background-color: white;
-  color: black;
-  border: solid black 2px;
-  transition: 0.3s;
-}
-
-.lista-container {
-  margin-top: 40px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
 }
 
-p {
-  padding: 5px;
-  border: solid black 1px;
+
+main {
+  width: 100%;
+}
+
+.container-geral {
+  width: 800px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  background-color: blue;
+
 }
