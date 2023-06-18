@@ -3,7 +3,7 @@
     <div class="inputs">
       <input placeholder="Digite o nome..." [(ngModel)]="nome" />
       <select [(ngModel)]="prop">
-        <option *ngFor="let prop of listaProps">{{ prop.nome }}</option>
+        <option *ngFor="let prop of listaProps" [ngValue]="prop">{{ prop.nome }}</option>
       </select>
     </div>
 
@@ -15,28 +15,46 @@
 
 <main>
   <section class="container-geral">
-
     <div *ngFor="let prop of listaProps">
+      <div class="prop-column"
+      (dragover)="dragoverProp(prop, $event)" (drop)="drop($event)">
 
-      <div class="prop-title">
-        <p>{{ prop.nome }}</p>
-      </div>
-
-      <div *ngFor="let tarefa of listaTarefas" class="card">
-        <div *ngIf="tarefa.propriedades?.nome === prop.nome">
-
-          <div class="card-title">
-            <p>{{ tarefa.nome }}</p>
-          </div>
-
-          <div class="card-prop-content">
-            <p></p>
-          </div>
-
+        <div class="prop-title">
+          <p> {{ prop.nome }} </p>
         </div>
 
-      </div>
+        <div *ngFor="let tarefa of listaTarefas; index as index">
+          <div *ngIf="tarefa.propriedades.nome == prop.nome" class="card"
+          draggable="true"
+          (dragstart)="dragTarefa(tarefa)"
+          (drop)="getIndex(index, $event)">
+            <div class="card-title">
+              <p> {{ tarefa.nome }} </p>
+            </div>
 
+            <div class="card-content">
+                <p> {{ tarefa.propriedades.nome }}: </p>
+
+                <div class="input">
+                  <p *ngIf="!tarefa.inputAdd"> {{ tarefa.conteudo }} </p>
+                  <input *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Texto'" [(ngModel)]="conteudo" />
+                  <input type="number" *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Número'" [(ngModel)]="conteudo" />
+                  <select *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Seleção'" [(ngModel)]="conteudo">
+                    <option *ngFor="let item of prop.itens"> {{ item }} </option>
+                  </select>
+                </div>
+            </div>
+
+            <div class="card-buttons">
+              <button *ngIf="!tarefa.inputAdd" (click)="showInput(tarefa)">Editar</button>
+              <button *ngIf="!tarefa.inputAdd" (click)="removerTarefa(tarefa)">Remover</button>
+
+              <button *ngIf="tarefa.inputAdd" (click)="showInput(tarefa)">Cancelar</button>
+              <button *ngIf="tarefa.inputAdd" (click)="confirmarAlteracao(tarefa)">Confimar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
