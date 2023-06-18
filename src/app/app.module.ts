@@ -3,19 +3,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { CategoriaComponent } from 'src/categoria/categoria.component';
-import { TodoComponent } from 'src/todo/todo.component';
+import { PropsComponent } from './propriedades/props.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CategoriaComponent,
-    TodoComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+  ],
+  declarations: [
+    AppComponent,
+    PropsComponent,
+    TodoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

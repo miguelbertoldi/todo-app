@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
-import { CategoriaComponent } from "src/categoria/categoria.component";
-import { TodoComponent } from "src/todo/todo.component";
+import { PropsComponent } from "./propriedades/props.component";
+import { TodoComponent } from "./todo/todo.component";
 
 const routes: Route[] = [
     {
-        path: 'categoria',
-        component: CategoriaComponent
+        path: 'propriedades',
+        component: PropsComponent
     },
     {
         path: 'tarefas',
@@ -25,5 +25,5 @@ const routes: Route[] = [
 })
 
 export class AppRoutingModule {
-    
+
 }
