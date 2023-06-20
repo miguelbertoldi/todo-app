@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PropsComponent } from './propriedades/props.component';
 import { TodoComponent } from './todo/todo.component';
+import { UserRepository } from 'src/repositories/user.repository';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { TodoComponent } from './todo/todo.component';
     PropsComponent,
     TodoComponent
   ],
-  providers: [],
+  providers: [
+    UserRepository
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
