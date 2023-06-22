@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { User } from "src/models/users/user";
 
 interface Propriedade {
   nome: string,
@@ -20,7 +21,10 @@ export class PropsComponent {
   listaTipos: string[] = ['Texto', 'Número', 'Seleção'];
   listaProps: Propriedade[] = [];
 
+  user: User = JSON.parse(localStorage.getItem('user'));
+
   ngOnInit() {
+
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'));
     }
@@ -28,6 +32,12 @@ export class PropsComponent {
     for (const i of this.listaProps) {
       i.inputAdd = false;
     }
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.user.propertiesPermissions.some((propertiesPermissions) => {
+      return propertiesPermissions === permission;
+    });
   }
 
   cadastrarPropriedade (): void {

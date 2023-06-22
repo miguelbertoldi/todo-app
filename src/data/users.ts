@@ -1,9 +1,8 @@
 import { User } from "src/models/users/user";
-
-export const users: User[] = [ 
+export const users: User[] = [
 	{
 		"id": "joao.silva",
-		"name": "João Silva",
+		"name": "João da Silva",
 		"groups": [],
 		"cardPermissions": [
 			"Add"
@@ -11,7 +10,7 @@ export const users: User[] = [
 		"propertiesPermissions": [
 			"Add"
 		]
-	}, 
+	},
 	{
 		"id": "henrique.santos",
 		"name": "Henrique Santos",
@@ -36,7 +35,7 @@ export const users: User[] = [
 	},
 	{
 		"id": "igor.guimaraes",
-		"name": "Igor Guimarães",
+		"name": "Igor Guimaraes",
 		"groups": [],
 		"cardPermissions": [
 			"MoveCard"

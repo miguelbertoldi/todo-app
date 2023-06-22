@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { User } from "src/models/users/user";
 
 interface Propriedade {
   nome: string,
@@ -31,7 +32,13 @@ export class TodoComponent {
   tarefaDrag: Tarefa;
   indexTarefaDrag: number;
 
+  user: User = JSON.parse(localStorage.getItem('user'));
+  private users: User[];
+  private userId: string;
+
+
   ngOnInit() {
+    console.log(this.user)
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'))
     }
@@ -39,6 +46,12 @@ export class TodoComponent {
     if (localStorage.getItem('listaTarefas') != null) {
       this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
     }
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.user.cardPermissions.some((cardPermission) => {
+      return cardPermission === permission;
+    });
   }
 
   cadastrarTarefa (): void {

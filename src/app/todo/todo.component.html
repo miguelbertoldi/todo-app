@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="hasPermission('Add')">
   <div>
     <div class="inputs">
       <input placeholder="Digite o nome..." [(ngModel)]="nome" />
@@ -46,8 +46,8 @@
             </div>
 
             <div class="card-buttons">
-              <button *ngIf="!tarefa.inputAdd" (click)="showInput(tarefa)">Editar</button>
-              <button *ngIf="!tarefa.inputAdd" (click)="removerTarefa(tarefa)">Remover</button>
+              <button *ngIf="!tarefa.inputAdd && hasPermission('Edit')" (click)="showInput(tarefa)">Editar</button>
+              <button *ngIf="!tarefa.inputAdd && hasPermission('Remove')" (click)="removerTarefa(tarefa)">Remover</button>
 
               <button *ngIf="tarefa.inputAdd" (click)="showInput(tarefa)">Cancelar</button>
               <button *ngIf="tarefa.inputAdd" (click)="confirmarAlteracao(tarefa)">Confimar</button>
