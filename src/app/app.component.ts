@@ -10,16 +10,14 @@ import { UserRepository } from 'src/repositories/user.repository';
 export class AppComponent {
   title = 'todo-app';
 
-  private userId: string = 'joao.silva';
-  private users: User[] = [];
-  user!: User;
-
   constructor(
     private userRepository: UserRepository
   ) {
-    this.users = this.userRepository.getUsers();
-    this.user = this.getUsuarioLogado();
-    localStorage.setItem('user', JSON.stringify(this.user));
+    userRepository.getUsers().subscribe({
+      next: (value) => {
+        console.log(value);
+      }
+    })
   }
 
   // adicionarTarefa(): void {
@@ -52,10 +50,10 @@ export class AppComponent {
   //   });
   // }
 
-  private getUsuarioLogado(): User {
-    return this.users.find((user) => {
-      return user.id === this.userId
-    }) as User;
-  }
+  // private getUsuarioLogado(): User {
+  //   return this.users.find((user) => {
+  //     return user.id === this.userId
+  //   }) as User;
+  // }
 
 }

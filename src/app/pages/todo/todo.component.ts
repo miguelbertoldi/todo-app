@@ -1,3 +1,4 @@
+import { UserRepository } from 'src/repositories/user.repository';
 import { Component, Input } from "@angular/core";
 import { User } from "src/models/users/user";
 
@@ -33,9 +34,16 @@ export class TodoComponent {
   indexTarefaDrag: number;
 
   user: User = JSON.parse(localStorage.getItem('user'));
-  private users: User[];
-  private userId: string;
 
+  constructor(
+    private UserRepository: UserRepository
+  ) {
+    // UserRepository.getUsers().subscribe({
+    //   next: (value) => {
+    //     this.user =
+    //   }
+    // })
+  }
 
   ngOnInit() {
     console.log(this.user)
