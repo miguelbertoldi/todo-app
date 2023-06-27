@@ -1,19 +1,8 @@
 import { UserRepository } from 'src/repositories/user.repository';
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { User } from "src/models/users/user";
-
-interface Propriedade {
-  nome: string,
-  tipo: string,
-  itens ?: string[],
-}
-
-interface Tarefa {
-  nome: string,
-  propriedades: Propriedade,
-  conteudo: string | number,
-  inputAdd: boolean
-}
+import { Propriedade } from 'src/interfaces/propriedade';
+import { Tarefa } from 'src/interfaces/tarefa';
 
 @Component({
   templateUrl: './todo.component.html',
@@ -65,9 +54,9 @@ export class TodoComponent {
   cadastrarTarefa (): void {
     if (this.nome != '' && this.prop != null) {
       const tarefa: Tarefa = {
-        nome: this.nome,
-        propriedades: this.prop,
-        conteudo: this.conteudo,
+        name: this.nome,
+        properties: this.prop,
+        content: this.conteudo,
         inputAdd: false
       }
 
@@ -97,7 +86,7 @@ export class TodoComponent {
   }
 
   confirmarAlteracao (tarefa: Tarefa): void {
-    tarefa.conteudo = this.conteudo;
+    tarefa.content = this.conteudo;
     this.showInput(tarefa);
   }
 
@@ -123,11 +112,11 @@ export class TodoComponent {
 
   drop (event: Event): void {
     event.preventDefault();
-    if (this.tarefaDrag.propriedades.tipo != this.propDrag.tipo) {
-      this.tarefaDrag.conteudo = '';
+    if (this.tarefaDrag.properties.type != this.propDrag.type) {
+      this.tarefaDrag.content = '';
     }
 
-    this.tarefaDrag.propriedades = this.propDrag;
+    this.tarefaDrag.properties = this.propDrag;
     this.listaTarefas.splice(this.listaTarefas.indexOf(this.tarefaDrag), 1);
     this.listaTarefas.splice(this.indexTarefaDrag, 0, this.tarefaDrag);
 

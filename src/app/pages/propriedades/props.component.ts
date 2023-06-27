@@ -1,12 +1,6 @@
 import { Component } from "@angular/core";
+import { Propriedade } from "src/interfaces/propriedade";
 import { User } from "src/models/users/user";
-
-interface Propriedade {
-  nome: string,
-  tipo: string,
-  itens ?: string[],
-  inputAdd ?: boolean
-}
 
 @Component({
   templateUrl: './props.component.html',
@@ -45,15 +39,15 @@ export class PropsComponent {
 
     if (this.tipo === 'Seleção') {
       prop = {
-        nome: this.nome,
-        tipo: this.tipo,
-        itens: [],
+        name: this.nome,
+        type: this.tipo,
+        items: [],
         inputAdd: false
       }
     } else {
       prop = {
-        nome: this.nome,
-        tipo: this.tipo,
+        name: this.nome,
+        type: this.tipo,
       }
     }
 
@@ -67,9 +61,9 @@ export class PropsComponent {
   }
 
   adicionarItem (prop: Propriedade): void {
-    console.log(prop.itens)
-    if (Array.isArray(prop.itens)){
-      prop.itens.push(this.item);
+    console.log(prop.items)
+    if (Array.isArray(prop.items)){
+      prop.items.push(this.item);
       this.item = '';
     }
 
@@ -78,8 +72,8 @@ export class PropsComponent {
 
   removerItem (item: string, prop: Propriedade): void {
 
-    if (Array.isArray(prop.itens)){
-      prop.itens.splice(prop.itens.indexOf(item), 1);
+    if (Array.isArray(prop.items)){
+      prop.items.splice(prop.items.indexOf(item), 1);
       this.item = '';
     }
     this.localStorage();

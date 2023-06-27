@@ -19,14 +19,14 @@
     <div *ngFor="let prop of listaProps">
       <div class="card">
         <div class="card-text">
-          <p>{{ prop.nome }}</p>
-          <p>{{ prop.tipo }}</p>
+          <p>{{ prop.name }}</p>
+          <p>{{ prop.type }}</p>
         </div>
 
-        <div class="prop-content" *ngIf="prop.tipo === 'Seleção'"
-        [ngClass]="{'prop-content-padding': prop.itens?.length > 0}">
+        <div class="prop-content" *ngIf="prop.type === 'Seleção'"
+        [ngClass]="{'prop-content-padding': prop.items?.length > 0}">
           <ul>
-            <li *ngFor="let item of prop.itens">
+            <li *ngFor="let item of prop.items">
               <div>{{ item }}</div>
               <div *ngIf="prop.inputAdd"> <button (click)="removerItem(item, prop)">x</button> </div>
             </li>
@@ -35,7 +35,7 @@
 
         <div class="prop-buttons">
 
-          <div *ngIf="prop.tipo === 'Seleção' && !prop.inputAdd">
+          <div *ngIf="prop.type === 'Seleção' && !prop.inputAdd">
             <button (click)="mostraInput(prop)">Editar</button>
           </div>
           <button *ngIf="!prop.inputAdd && hasPermission('Remove')" (click)="removerPropriedade(prop)">Remover</button>
