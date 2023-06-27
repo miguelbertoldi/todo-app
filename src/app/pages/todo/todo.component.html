@@ -33,13 +33,13 @@
             </div>
 
             <div class="card-content">
-                <p> {{ tarefa.propriedades.nome }}: </p>
+                <p> {{ tarefa.properties.name }}: </p>
 
                 <div class="input">
-                  <p *ngIf="!tarefa.inputAdd"> {{ tarefa.conteudo }} </p>
-                  <input *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Texto'" [(ngModel)]="conteudo" />
-                  <input type="number" *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Número'" [(ngModel)]="conteudo" />
-                  <select *ngIf="tarefa.inputAdd && tarefa.propriedades.tipo == 'Seleção'" [(ngModel)]="conteudo">
+                  <p *ngIf="!tarefa.inputAdd"> {{ tarefa.content }} </p>
+                  <input *ngIf="tarefa.inputAdd && tarefa.properties.type == 'Texto'" [(ngModel)]="conteudo" />
+                  <input type="number" *ngIf="tarefa.inputAdd && tarefa.properties.type == 'Número'" [(ngModel)]="conteudo" />
+                  <select *ngIf="tarefa.inputAdd && tarefa.properties.type == 'Seleção'" [(ngModel)]="conteudo">
                     <option *ngFor="let item of prop.items"> {{ item }} </option>
                   </select>
                 </div>
