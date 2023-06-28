@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { User } from "src/models/classes/users/user";
 import { Propriedade } from 'src/interfaces/Propriedade';
 import { Tarefa } from 'src/models/interfaces/Tarefa';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   templateUrl: './todo.component.html',
@@ -25,12 +25,17 @@ export class TodoComponent {
 
   user: User;
 
-  constructor() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+  constructor(private authService: AuthService) {
+    
   }
 
   ngOnInit() {
-    console.log(this.user);
+    this.authService.userEmitter.subscribe(
+      user => this.user = user
+    )
+
+    console.log(this.user)
+    
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'))
     }

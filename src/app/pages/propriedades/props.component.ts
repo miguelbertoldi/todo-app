@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Propriedade } from "src/interfaces/Propriedade";
 import { User } from "src/models/classes/users/user";
-import { AuthService } from "../login/auth.service";
+import { AuthService } from "../../../services/auth.service";
 
 @Component({
   templateUrl: './props.component.html',

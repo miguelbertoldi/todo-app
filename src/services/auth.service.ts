@@ -2,20 +2,20 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/models/classes/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
-import { LoginComponent } from './login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authenticatedUser: boolean = JSON.parse(localStorage.getItem('isAuthenticated'));
+  private authenticatedUser: boolean;
 
   users: User[];
   user: User;
 
   showMenuEmitter = new EventEmitter<boolean>();
-
+  userEmitter = new EventEmitter<User>();
+  
   constructor(
     private router: Router,
     private userRepository: UserRepository
@@ -31,7 +31,7 @@ export class AuthService {
   login(userId: string, userName: string): void {
 
     if (this.userExists(userId, userName)) {
-      localStorage.setItem('isAuthenticated', JSON.stringify(true));
+      this.authenticatedUser = true;
 
       this.showMenuEmitter.emit(true);
 

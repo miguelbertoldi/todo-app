@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/models/classes/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
-import { AuthService } from './pages/login/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'todo-app';
 
   showMenu: boolean = false;
+  user: User;
 
   constructor(
     private authService: AuthService
@@ -21,6 +22,11 @@ export class AppComponent {
     this.authService.showMenuEmitter.subscribe(
       show => this.showMenu = show
     );
+
+    this.authService.userEmitter.subscribe(
+      user => this.user = user
+    )
+    console.log(this.user)
   }
 
   
