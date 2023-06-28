@@ -1,8 +1,9 @@
 import { UserRepository } from 'src/repositories/user.repository';
 import { Component } from "@angular/core";
-import { User } from "src/models/users/user";
-import { Propriedade } from 'src/interfaces/propriedade';
-import { Tarefa } from 'src/interfaces/tarefa';
+import { User } from "src/models/classes/users/user";
+import { Propriedade } from 'src/interfaces/Propriedade';
+import { Tarefa } from 'src/models/interfaces/Tarefa';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   templateUrl: './todo.component.html',
@@ -22,20 +23,14 @@ export class TodoComponent {
   tarefaDrag: Tarefa;
   indexTarefaDrag: number;
 
-  user: User = JSON.parse(localStorage.getItem('user'));
+  user: User;
 
-  constructor(
-    private UserRepository: UserRepository
-  ) {
-    // UserRepository.getUsers().subscribe({
-    //   next: (value) => {
-    //     this.user =
-    //   }
-    // })
+  constructor() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit() {
-    console.log(this.user)
+    console.log(this.user);
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'))
     }

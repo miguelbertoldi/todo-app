@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from 'src/models/users/user';
+import { User } from 'src/models/classes/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
+import { AuthService } from './pages/login/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,19 @@ import { UserRepository } from 'src/repositories/user.repository';
 export class AppComponent {
   title = 'todo-app';
 
+  showMenu: boolean = false;
+
   constructor(
-    private userRepository: UserRepository
-  ) {
-    userRepository.getUsers().subscribe({
-      next: (value) => {
-        console.log(value);
-      }
-    })
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.showMenuEmitter.subscribe(
+      show => this.showMenu = show
+    );
   }
+
+  
 
   // adicionarTarefa(): void {
   //   if (!this.hasPermission('Add')) {

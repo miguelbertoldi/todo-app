@@ -18,11 +18,12 @@ const routes: Route[] = [
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [!AuthGuardService]
       },
       {
         path: '',
-        component: TodoComponent,
+        component: LoginComponent,
     }
 
 ]

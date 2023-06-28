@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { Propriedade } from "src/interfaces/propriedade";
-import { User } from "src/models/users/user";
+import { Propriedade } from "src/interfaces/Propriedade";
+import { User } from "src/models/classes/users/user";
+import { AuthService } from "../login/auth.service";
 
 @Component({
   templateUrl: './props.component.html',
@@ -15,9 +16,14 @@ export class PropsComponent {
   listaTipos: string[] = ['Texto', 'Número', 'Seleção'];
   listaProps: Propriedade[] = [];
 
-  user: User = JSON.parse(localStorage.getItem('user'));
+  user: User;
+
+  constructor() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
 
   ngOnInit() {
+    console.log(this.user)
 
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'));

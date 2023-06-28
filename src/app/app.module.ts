@@ -9,6 +9,7 @@ import { UserRepository } from 'src/repositories/user.repository';
 import { AuthGuardService } from 'src/services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './pages/login/auth.service';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { LoginComponent } from './pages/login/login.component';
   ],
   providers: [
     UserRepository,
-    AuthGuardService
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

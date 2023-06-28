@@ -1,4 +1,4 @@
-import { Propriedade } from "./propriedade";
+import { Propriedade } from "../../interfaces/Propriedade";
 
 export interface Tarefa {
     name: string,
