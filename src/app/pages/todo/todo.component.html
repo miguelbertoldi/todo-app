@@ -1,4 +1,5 @@
-<header *ngIf="hasPermission('Add')">
+<header >
+  <!-- *ngIf="hasPermission('Add')" -->
   <div>
     <div class="inputs">
       <input placeholder="Digite o nome..." [(ngModel)]="nome" />
@@ -13,7 +14,7 @@
   </div>
 </header>
 
-<main>
+<!-- <main>
   <section class="container-geral">
     <div *ngFor="let prop of listaProps">
       <div class="prop-column"
@@ -57,4 +58,4 @@
       </div>
     </div>
   </section>
-</main>
+</main> -->

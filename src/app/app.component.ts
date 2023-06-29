@@ -15,17 +15,23 @@ export class AppComponent {
   user: User;
 
   constructor(
-    private authService: AuthService
-  ) {}
+    private userRepository: UserRepository
+  ) {
+    userRepository.getUsers().subscribe({
+      next: (value) => {
+        console.log(value);
+      }
+    })
+  }
 
   ngOnInit(): void {
-    this.authService.showMenuEmitter.subscribe(
-      show => this.showMenu = show
-    );
+    // this.authService.showMenuEmitter.subscribe(
+    //   show => this.showMenu = show
+    // );
 
-    this.authService.userEmitter.subscribe(
-      user => this.user = user
-    )
+    // this.authService.userEmitter.subscribe(
+    //   user => this.user = user
+    // )
     console.log(this.user)
   }
 

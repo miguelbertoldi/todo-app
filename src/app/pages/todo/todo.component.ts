@@ -25,14 +25,9 @@ export class TodoComponent {
 
   user: User;
 
-  constructor(private authService: AuthService) {
-    
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.userEmitter.subscribe(
-      user => this.user = user
-    )
 
     console.log(this.user)
     
@@ -45,11 +40,11 @@ export class TodoComponent {
     }
   }
 
-  hasPermission(permission: string): boolean {
-    return this.user.cardPermissions.some((cardPermission) => {
-      return cardPermission === permission;
-    });
-  }
+  // hasPermission(permission: string): boolean {
+  //   return this.user.cardPermissions.some((cardPermission) => {
+  //     return cardPermission === permission;
+  //   });
+  // }
 
   cadastrarTarefa (): void {
     if (this.nome != '' && this.prop != null) {
