@@ -14,10 +14,7 @@ export class LoginComponent implements OnInit {
 
   userId: string;
   userPassword: string;
-  users: User[];
   logged: User;
-
-  API_URL: string = 'http://localhost:4300/users'
 
   constructor(
     private userRepository: UserRepository,
@@ -41,15 +38,9 @@ export class LoginComponent implements OnInit {
           if (i.id == this.userId && i.password == this.userPassword) {
             this.logged = i;
             this.router.navigate(['/tarefas']);
-
           } 
         }
-
-
       }
     })
   }
-
-
-
 }

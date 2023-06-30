@@ -4,6 +4,7 @@ import { PropsComponent } from "./pages/propriedades/props.component";
 import { TodoComponent } from "./pages/todo/todo.component";
 import { AuthGuardService } from "src/services/auth-guard.service";
 import { LoginComponent } from "./pages/login/login.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 const routes: Route[] = [
     {
@@ -20,6 +21,10 @@ const routes: Route[] = [
         path: 'login',
         component: LoginComponent,
         canActivate: [!AuthGuardService]
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
       {
         path: '',

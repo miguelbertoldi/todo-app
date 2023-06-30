@@ -1,0 +1,17 @@
+<section>
+  <form>
+    <label>
+      <p>Registro</p>
+    </label>
+    <div>
+      <input name="username" type="text" placeholder="Nome completo" [(ngModel)]="user.name"/>
+      <input name="id" type="text" placeholder="Username" [(ngModel)]="user.id"/>
+      <input name="email" type="text" placeholder="E-mail" [(ngModel)]="user.email"/>
+      <input name="password" type="password" placeholder="Senha" [(ngModel)]="user.password"/>
+    </div>
+    <div>
+      <button (click)="register()">Cadastrar</button>
+      <a [routerLink]="['']">Já tenho uma conta</a>
+    </div>
+  </form>
+</section>
