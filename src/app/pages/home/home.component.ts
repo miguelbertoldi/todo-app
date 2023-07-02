@@ -6,8 +6,8 @@ import { Tarefa } from 'src/models/interfaces/Tarefa';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 
 export class TodoComponent {
@@ -30,7 +30,7 @@ export class TodoComponent {
   ngOnInit() {
 
     console.log(this.user)
-    
+
     if (localStorage.getItem('listaProps') != null) {
       this.listaProps = JSON.parse(localStorage.getItem('listaProps'))
     }
