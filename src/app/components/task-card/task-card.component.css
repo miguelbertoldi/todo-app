@@ -1,0 +1,14 @@
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px grey;
+    width: 260px;
+    min-height: 150px;
+    padding: 10px;
+}
+
+.title {
+    font-size: 20px;
+}

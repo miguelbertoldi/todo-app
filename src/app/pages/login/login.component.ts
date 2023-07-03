@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/classes/users/user';
-import { AuthService } from '../../../services/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { UserRepository } from 'src/repositories/user.repository';
 import { Router } from '@angular/router';
 
@@ -37,7 +35,7 @@ export class LoginComponent implements OnInit {
         for (const i of value) {
           if (i.id == this.userId && i.password == this.userPassword) {
             this.logged = i;
-            this.router.navigate(['/tarefas']);
+            this.router.navigate(['/home']);
           } 
         }
       }

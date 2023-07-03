@@ -1,7 +1,7 @@
 import { UserRepository } from 'src/repositories/user.repository';
 import { Component } from "@angular/core";
 import { User } from "src/models/classes/users/user";
-import { Propriedade } from 'src/interfaces/Propriedade';
+import { Propriedade } from 'src/models/interfaces/Propriedade';
 import { Tarefa } from 'src/models/interfaces/Tarefa';
 import { AuthService } from '../../../services/auth.service';
 
@@ -10,10 +10,16 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./home.component.css']
 })
 
-export class TodoComponent {
+export class HomeComponent {
 
-  listaTarefas: Tarefa[] = [];
-  listaProps: Propriedade[];
+  taskList: Tarefa[] = [
+    {
+      name: 'Tarefa 1',
+      content: ''
+    }
+  ];
+
+  propsList: Propriedade[];
 
   nome: string;
   prop: Propriedade;
@@ -31,12 +37,12 @@ export class TodoComponent {
 
     console.log(this.user)
 
-    if (localStorage.getItem('listaProps') != null) {
-      this.listaProps = JSON.parse(localStorage.getItem('listaProps'))
+    if (localStorage.getItem('propsList') != null) {
+      this.propsList = JSON.parse(localStorage.getItem('propsList'))
     }
 
-    if (localStorage.getItem('listaTarefas') != null) {
-      this.listaTarefas = JSON.parse(localStorage.getItem('listaTarefas'));
+    if (localStorage.getItem('taskList') != null) {
+      this.taskList = JSON.parse(localStorage.getItem('taskList'));
     }
   }
 
@@ -55,7 +61,7 @@ export class TodoComponent {
         inputAdd: false
       }
 
-      this.listaTarefas.push(tarefa);
+      this.taskList.push(tarefa);
       this.setLocalStorage();
     }
 
@@ -64,7 +70,7 @@ export class TodoComponent {
   }
 
   removerTarefa (tarefa: Tarefa): void {
-    this.listaTarefas.splice(this.listaTarefas.indexOf(tarefa), 1);
+    this.taskList.splice(this.taskList.indexOf(tarefa), 1);
     this.setLocalStorage();
   }
 
@@ -72,7 +78,7 @@ export class TodoComponent {
     tarefa.inputAdd = !tarefa.inputAdd;
     this.conteudo = '';
 
-    for (const i of this.listaTarefas) {
+    for (const i of this.taskList) {
       if (i != tarefa) {
         i.inputAdd = false;
       }
@@ -86,7 +92,7 @@ export class TodoComponent {
   }
 
   setLocalStorage (): void {
-    localStorage.setItem('listaTarefas', JSON.stringify(this.listaTarefas));
+    localStorage.setItem('taskList', JSON.stringify(this.taskList));
   }
 
   //drag n drop
@@ -112,8 +118,8 @@ export class TodoComponent {
     }
 
     this.tarefaDrag.properties = this.propDrag;
-    this.listaTarefas.splice(this.listaTarefas.indexOf(this.tarefaDrag), 1);
-    this.listaTarefas.splice(this.indexTarefaDrag, 0, this.tarefaDrag);
+    this.taskList.splice(this.taskList.indexOf(this.tarefaDrag), 1);
+    this.taskList.splice(this.indexTarefaDrag, 0, this.tarefaDrag);
 
   }
 

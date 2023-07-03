@@ -1,3 +1,14 @@
-<p>
-  task-card works!
-</p>
+<div id="card">
+  <div class="title bold">
+    <p> {{ task.name }} </p>
+  </div>
+
+  <div class="content">
+    <p> {{ task.content }} </p>
+  </div>
+
+  <div class="buttons">
+    <button (click)="edit()">Editar</button>
+    <button (click)="remove()">Remover</button>
+  </div>
+</div>

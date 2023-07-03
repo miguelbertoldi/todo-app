@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Propriedade } from "src/interfaces/Propriedade";
+import { Propriedade } from "src/models/interfaces/Propriedade";
 import { User } from "src/models/classes/users/user";
 import { AuthService } from "../../../services/auth.service";
 

@@ -3,3 +3,7 @@
     list-style-type: none;
     font-family: sans-serif;
 }
+
+.bold {
+    font-weight: bold;
+}

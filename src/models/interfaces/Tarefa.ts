@@ -1,8 +1,8 @@
-import { Propriedade } from "../../interfaces/Propriedade";
+import { Propriedade } from "./Propriedade";
 
 export interface Tarefa {
     name: string,
-    properties: Propriedade,
+    properties?: Propriedade,
     content: string | number,
-    inputAdd: boolean
+    inputAdd?: boolean
 }
