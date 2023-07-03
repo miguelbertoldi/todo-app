@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/models/classes/users/user';
-import { UserWtCard } from 'src/models/classes/users/userWtCard';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { UserWtCard } from 'src/models/classes/users/userWtCard';
 })
 export class RegisterComponent implements OnInit {
 
-  user: UserWtCard = {
+  user: User = {
     id: '',
     name: '',
     password: '',

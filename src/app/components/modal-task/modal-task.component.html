@@ -1,15 +1,14 @@
-<section>
+<div id="all">
   <form>
     <div>
-      <input type="text" placeholder="Nome da tarefa" />
-      <select>
-        <option *ngFor="let item of propsList"> {{ item }} </option>
+      <input type="text" placeholder="Nome da tarefa" [(ngModel)]="task.name" name="taskName" />
+      <select [(ngModel)]="task.prop" name="taskProp">
+        <option *ngFor="let prop of propList" [ngValue]="prop">{{ prop.nome }}</option>
       </select>
-
     </div>
 
     <div>
-
+      <button (click)="createCard()">Cadastrar</button>
     </div>
   </form>
-</section>
+</div>

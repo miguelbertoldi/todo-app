@@ -1,9 +1,15 @@
-<app-modal [propsList]="propsList"></app-modal>
+<app-modal [propsList]="propsList"
+    [propsList]="propsList"
+    (newCard)="createCard($event)"
+></app-modal>
+
+
 
 <section class="tasks-container">
     <app-task-card
-        *ngFor="let taskItem of taskList"
-        [task]="taskItem"
+        *ngFor="let task of taskList"
+        [task]="task"
+        (removeCard)="removeCard($event)"
         draggable="true"
     ></app-task-card>
 </section>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tarefa } from 'src/models/interfaces/Tarefa';
 
 @Component({
@@ -11,10 +11,15 @@ export class TaskCardComponent implements OnInit {
   @Input('task') task: Tarefa;
   // @Input('hasPermission') hasPermission: boolean;
 
+  @Output() remove = new EventEmitter()
+
   constructor() { }
 
   ngOnInit() {
-    console.log(this.task)
+  }
+
+  removeCard(): void {
+    this.remove.emit(this.task);
   }
 
 }

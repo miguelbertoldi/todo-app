@@ -1,4 +1,3 @@
-import { UserRepository } from 'src/repositories/user.repository';
 import { Component } from "@angular/core";
 import { User } from "src/models/classes/users/user";
 import { Propriedade } from 'src/models/interfaces/Propriedade';
@@ -19,7 +18,12 @@ export class HomeComponent {
     }
   ];
 
-  propsList: Propriedade[];
+  propsList: Propriedade[] = [
+    {
+      name: 'Propriedade 1',
+      type: 'Texto'
+    }
+  ];
 
   nome: string;
   prop: Propriedade;
@@ -52,21 +56,14 @@ export class HomeComponent {
   //   });
   // }
 
-  cadastrarTarefa (): void {
-    if (this.nome != '' && this.prop != null) {
-      const tarefa: Tarefa = {
-        name: this.nome,
-        properties: this.prop,
-        content: this.conteudo,
-        inputAdd: false
-      }
+  createCard(card: Tarefa): void {
+    this.taskList.push(card);
+    localStorage.setItem('taskList', JSON.stringify(this.taskList));
+  }
 
-      this.taskList.push(tarefa);
-      this.setLocalStorage();
-    }
-
-    this.nome = '';
-    this.prop = null;
+  removeCard(card: Tarefa) {
+    this.taskList.splice(this.taskList.indexOf(card), 1);
+    console.log(card)
   }
 
   removerTarefa (tarefa: Tarefa): void {
