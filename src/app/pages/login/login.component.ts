@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/classes/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
         for (const i of value) {
           if (i.id == this.userId && i.password == this.userPassword) {
             this.logged = i;
+            localStorage.setItem('user', JSON.stringify(i));
             this.router.navigate(['/home']);
           } 
         }

@@ -8,7 +8,6 @@ import { UserRepository } from 'src/repositories/user.repository';
 import { AuthGuardService } from 'src/services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthService } from '../services/auth.service';
 import { RegisterComponent } from './pages/register/register.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { ModalComponent } from './components/modal-task/modal-task.component';
@@ -32,8 +31,7 @@ import { PropsComponent } from './pages/propriedades/props.component';
   ],
   providers: [
     UserRepository,
-    AuthGuardService,
-    AuthService
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

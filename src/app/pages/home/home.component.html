@@ -1,3 +1,5 @@
+<button (click)="logout()">logout</button>
+
 <app-modal [propsList]="propsList"
     [propsList]="propsList"
     (newCard)="createCard($event)"
@@ -9,7 +11,7 @@
     <app-task-card
         *ngFor="let task of taskList"
         [task]="task"
-        (removeCard)="removeCard($event)"
+        (remove)="removeCard($event)"
         draggable="true"
     ></app-task-card>
 </section>

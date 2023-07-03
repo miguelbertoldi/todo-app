@@ -18,6 +18,10 @@ export class TaskCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  editCard(): void {
+
+  }
+
   removeCard(): void {
     this.remove.emit(this.task);
   }
