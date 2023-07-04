@@ -12,6 +12,13 @@ export class AuthGuardService implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    return true;
+    const logged: boolean = JSON.parse(localStorage.getItem('logged'));
+
+    if (logged) {
+      return true;
+    }
+
+    return false;
   }
+
 }

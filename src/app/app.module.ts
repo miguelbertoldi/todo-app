@@ -11,7 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { ModalComponent } from './components/modal-task/modal-task.component';
-import { PropsComponent } from './pages/propriedades/props.component';
+import { CookieService } from 'src/services/cookie-service.service';
 
 @NgModule({
   imports: [
@@ -26,12 +26,12 @@ import { PropsComponent } from './pages/propriedades/props.component';
     LoginComponent,
     RegisterComponent,
     TaskCardComponent,
-    PropsComponent,
     ModalComponent
   ],
   providers: [
     UserRepository,
-    AuthGuardService
+    AuthGuardService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

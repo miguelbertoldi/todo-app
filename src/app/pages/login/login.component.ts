@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/models/classes/users/user';
 import { UserRepository } from 'src/repositories/user.repository';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import { CookieServiceService } from 'src/services/cookie-service.service';
+import { CookieService } from 'src/services/cookie-service.service';
 
 @Component({
   selector: 'app-login',
@@ -14,22 +12,26 @@ export class LoginComponent implements OnInit {
 
   userId: string;
   userPassword: string;
-  logged: User;
+
 
   constructor(
     private userRepository: UserRepository,
     private router: Router,
-    private cookieService: CookieServiceService
+    private cookieService: CookieService
   ) {
     userRepository.getUsers().subscribe({
       next: (value) => {
         console.log(value);
       }
     })
+
+    if (cookieService.cookieExists('user')) {
+      localStorage.setItem('logged', 'true');
+      this.router.navigate(['/home']);
+    }
   }
 
   ngOnInit() {
-
   }
 
   login(): void {
@@ -37,13 +39,12 @@ export class LoginComponent implements OnInit {
       next: (value) => {
         for (const i of value) {
           if (i.id == this.userId && i.password == this.userPassword) {
-            this.logged = i;
-            localStorage.setItem('user', JSON.stringify(i));
             this.cookieService.createCookie(i);
+            localStorage.setItem('logged', 'true');
             this.router.navigate(['/home']);
           } 
         }
       }
-    })
+    });
   }
 }

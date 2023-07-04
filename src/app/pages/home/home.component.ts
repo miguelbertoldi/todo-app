@@ -1,9 +1,9 @@
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "src/models/classes/users/user";
 import { Propriedade } from 'src/models/interfaces/Propriedade';
 import { Tarefa } from 'src/models/interfaces/Tarefa';
+import { CookieService } from "src/services/cookie-service.service";
 
 @Component({
   templateUrl: './home.component.html',
@@ -14,18 +14,20 @@ export class HomeComponent {
 
   taskList: Tarefa[];
   propsList: Propriedade[];
+  user: User = JSON.parse(this.cookieService.getCookieValue('user'));
 
-  user: User = JSON.parse(localStorage.getItem('user'));
-
+  
   constructor(
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
     ) {}
 
   ngOnInit() {
   }
 
   logout(): void {
-    localStorage.setItem('user', JSON.parse(null));
+    localStorage.setItem('logged', 'false')
+    this.cookieService.removeCookie();
     this.router.navigate(['']);
   }
 
