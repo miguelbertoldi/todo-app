@@ -12,6 +12,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { ModalComponent } from './components/modal-task/modal-task.component';
 import { CookieService } from 'src/services/cookie-service.service';
+import { ModalPropComponent } from './components/modal-prop/modal-prop.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { CookieService } from 'src/services/cookie-service.service';
     LoginComponent,
     RegisterComponent,
     TaskCardComponent,
-    ModalComponent
+    ModalComponent,
+    ModalPropComponent
   ],
   providers: [
     UserRepository,

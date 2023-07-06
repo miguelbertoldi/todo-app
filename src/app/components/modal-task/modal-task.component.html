@@ -3,7 +3,7 @@
     <div>
       <input type="text" placeholder="Nome da tarefa" [(ngModel)]="task.name" name="taskName" />
       <select [(ngModel)]="task.prop" name="taskProp">
-        <option *ngFor="let prop of propList" [ngValue]="prop">{{ prop.nome }}</option>
+        <option *ngFor="let prop of propList" [ngValue]="prop">{{ prop.name }}</option>
       </select>
     </div>
 

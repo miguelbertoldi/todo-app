@@ -3,18 +3,20 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angul
 import { Observable } from "rxjs";
 import { User } from "src/models/classes/users/user";
 import { UserRepository } from "src/repositories/user.repository";
+import { CookieService } from "./cookie-service.service";
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
   constructor(
-    private userRepository: UserRepository
+    private userRepository: UserRepository,
+    private cookieService: CookieService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    const logged: boolean = JSON.parse(localStorage.getItem('logged'));
+    const logged: User = JSON.parse(this.cookieService.getCookieValue('user'));
 
-    if (logged) {
+    if (logged != null) {
       return true;
     }
 

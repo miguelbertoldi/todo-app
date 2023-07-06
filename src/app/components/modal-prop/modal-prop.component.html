@@ -1,0 +1,14 @@
+<div id="all">
+  <form>
+    <div>
+      <input type="text" placeholder="Nome da propriedade" [(ngModel)]="prop.name" name="propName" />
+      <select [(ngModel)]="prop.type" name="propType">
+        <option *ngFor="let type of typeList" [ngValue]="prop">{{ type }}</option>
+      </select>
+    </div>
+
+    <div>
+      <button (click)="createProp()">Cadastrar</button>
+    </div>
+  </form>
+</div>

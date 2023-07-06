@@ -1,9 +1,15 @@
 <button (click)="logout()">logout</button>
 
+<p>Tarefa</p>
 <app-modal [propsList]="propsList"
-    [propsList]="propsList"
     (newCard)="createCard($event)"
 ></app-modal>
+
+<br>
+
+<p>Propriedade</p>
+<app-modal-prop (newProp)="createProp($event)"
+></app-modal-prop>
 
 
 
