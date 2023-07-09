@@ -3,7 +3,7 @@
     <div>
       <input type="text" placeholder="Nome da propriedade" [(ngModel)]="prop.name" name="propName" />
       <select [(ngModel)]="prop.type" name="propType">
-        <option *ngFor="let type of typeList" [ngValue]="prop">{{ type }}</option>
+        <option *ngFor="let type of typeList">{{ type }}</option>
       </select>
     </div>
 

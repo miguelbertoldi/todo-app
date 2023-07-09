@@ -16,12 +16,18 @@ export class HomeComponent {
   propsList: Propriedade[] = [];
   user: User = JSON.parse(this.cookieService.getCookieValue('user'));
 
-  
+
   constructor(
     private router: Router,
     private cookieService: CookieService
     ) {
-      this.taskList = JSON.parse(localStorage.getItem('taskList'));
+      if (localStorage.getItem('taskList') != null) {
+        this.taskList = JSON.parse(localStorage.getItem('taskList'));
+      }
+
+      if (localStorage.getItem('propsList') != null) {
+        this.propsList = JSON.parse(localStorage.getItem('propsList'));
+      }
     }
 
   logout(): void {
@@ -46,8 +52,6 @@ export class HomeComponent {
   }
 
   createProp(prop: Propriedade) {
-    console.log(prop);
-    console.log(this.propsList)
     this.propsList.push(prop);
     localStorage.setItem('propsList', JSON.stringify(this.propsList));
   }

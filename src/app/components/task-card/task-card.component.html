@@ -3,8 +3,9 @@
     <p> {{ task.name }} </p>
   </div>
 
-  <div class="content">
-    <p> {{ task.content }} </p>
+  <div class="content flex-row">
+    <p class="bold"> {{ task.properties.name }}: </p>
+    <p>{{ task.content ? task.content : 'Vazio' }}</p>
   </div>
 
   <div class="buttons">

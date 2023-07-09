@@ -23,7 +23,8 @@ export class ModalPropComponent implements OnInit {
   }
 
   createProp() {
-    this.newProp.emit(this.prop);
+    const propsCopy = { ...this.prop }
+    this.newProp.emit(propsCopy);
   }
 
 }

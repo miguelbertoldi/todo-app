@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'; 
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Propriedade } from 'src/models/interfaces/Propriedade';
 import { Tarefa } from 'src/models/interfaces/Tarefa';
 
@@ -9,7 +9,7 @@ import { Tarefa } from 'src/models/interfaces/Tarefa';
 })
 export class ModalComponent implements OnInit {
 
-  @Input('propsList') propsList: Propriedade[];
+  @Input('propsList') propsList: Propriedade[] = [];
   @Output() newCard = new EventEmitter();
 
   task: Tarefa = {
