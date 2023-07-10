@@ -23,7 +23,9 @@ export class ModalComponent implements OnInit {
   }
 
   createCard(): void {
-    this.newCard.emit(this.task);
+    const newCard = { ...this.task };
+    this.newCard.emit(newCard);
+    this.task.name = '';
   }
 
   addProperty(): void {

@@ -27,6 +27,8 @@ export class ModalPropComponent implements OnInit {
   createProp() {
     const propsCopy = { ...this.prop }
     this.newProp.emit(propsCopy);
+    this.prop.name = '';
+    this.prop.type = '';
   }
 
 }
