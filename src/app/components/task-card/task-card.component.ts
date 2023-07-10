@@ -14,7 +14,7 @@ export class TaskCardComponent implements OnInit {
   @Output() remove = new EventEmitter()
   @Output() edit = new EventEmitter();
 
-  isEditingTitle = false;
+  isEditingTitle: boolean = false;
 
   constructor() { }
 
