@@ -11,12 +11,19 @@
 
 .title {
     font-size: 20px;
-    cursor: pointer
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.title:hover {
+  background-color: lightgray;
 }
 
 .title input {
   text-align: center;
   height: 30px;
+  padding: 0;
   border: none;
 }
 

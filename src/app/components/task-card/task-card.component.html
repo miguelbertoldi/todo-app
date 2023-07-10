@@ -3,7 +3,7 @@
 
     <p *ngIf="!isEditingTitle"
         (dblclick)="editCardTitle()">
-        {{ task.name }}
+        {{ task.name ? task.name : 'Nome indefinido' }}
     </p>
 
     <input type="text"
