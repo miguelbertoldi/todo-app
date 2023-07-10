@@ -19,6 +19,7 @@
     <app-task-card
         *ngFor="let task of taskList"
         [task]="task"
+        (edit)="editCard()"
         (remove)="removeCard($event)"
         draggable="true"
     ></app-task-card>

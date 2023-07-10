@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Propriedade } from 'src/models/interfaces/Propriedade';
-import { Tarefa } from 'src/models/interfaces/Tarefa';
+import { Property } from 'src/models/interfaces/Property';
+import { Task } from 'src/models/interfaces/Task';
 
 @Component({
   selector: 'app-modal',
@@ -9,12 +9,12 @@ import { Tarefa } from 'src/models/interfaces/Tarefa';
 })
 export class ModalComponent implements OnInit {
 
-  @Input('propsList') propsList: Propriedade[] = [];
+  @Input('propsList') propsList: Property[] = [];
   @Output() newCard = new EventEmitter();
 
-  task: Tarefa = {
+  task: Task = {
     name: '',
-    content: ''
+    properties: []
   }
 
   constructor() { }
@@ -24,6 +24,10 @@ export class ModalComponent implements OnInit {
 
   createCard(): void {
     this.newCard.emit(this.task);
+  }
+
+  addProperty(): void {
+
   }
 
 }

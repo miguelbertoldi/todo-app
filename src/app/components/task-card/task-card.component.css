@@ -11,4 +11,15 @@
 
 .title {
     font-size: 20px;
+    cursor: pointer
+}
+
+.title input {
+  text-align: center;
+  height: 30px;
+  border: none;
+}
+
+.title input:focus {
+  outline: none;
 }

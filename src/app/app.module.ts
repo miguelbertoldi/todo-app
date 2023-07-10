@@ -15,12 +15,6 @@ import { CookieService } from 'src/services/cookie-service.service';
 import { ModalPropComponent } from './components/modal-prop/modal-prop.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -29,6 +23,12 @@ import { ModalPropComponent } from './components/modal-prop/modal-prop.component
     TaskCardComponent,
     ModalComponent,
     ModalPropComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     UserRepository,

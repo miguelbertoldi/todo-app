@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "src/models/classes/users/user";
-import { Propriedade } from 'src/models/interfaces/Propriedade';
-import { Tarefa } from 'src/models/interfaces/Tarefa';
+import { Property } from 'src/models/interfaces/Property';
+import { Task } from 'src/models/interfaces/Task';
 import { CookieService } from "src/services/cookie-service.service";
 
 @Component({
@@ -12,8 +12,8 @@ import { CookieService } from "src/services/cookie-service.service";
 
 export class HomeComponent {
 
-  taskList: Tarefa[] = [];
-  propsList: Propriedade[] = [];
+  taskList: Task[] = [];
+  propsList: Property[] = [];
   user: User = JSON.parse(this.cookieService.getCookieValue('user'));
 
 
@@ -41,17 +41,21 @@ export class HomeComponent {
   //   });
   // }
 
-  createCard(card: Tarefa): void {
+  createCard(card: Task): void {
     this.taskList.push(card);
     localStorage.setItem('taskList', JSON.stringify(this.taskList));
   }
 
-  removeCard(card: Tarefa) {
+  editCard(): void {
+    localStorage.setItem('taskList', JSON.stringify(this.taskList));
+  }
+
+  removeCard(card: Task) {
     this.taskList.splice(this.taskList.indexOf(card), 1);
     localStorage.setItem('taskList', JSON.stringify(this.taskList));
   }
 
-  createProp(prop: Propriedade) {
+  createProp(prop: Property) {
     this.propsList.push(prop);
     localStorage.setItem('propsList', JSON.stringify(this.propsList));
   }

@@ -1,15 +1,30 @@
 <div id="card">
   <div class="title bold">
-    <p> {{ task.name }} </p>
+
+    <p *ngIf="!isEditingTitle"
+        (dblclick)="editCardTitle()">
+        {{ task.name }}
+    </p>
+
+    <input type="text"
+        class="title bold"
+        *ngIf="isEditingTitle"
+        [(ngModel)]="task.name"
+        (change)="commitChange()"
+        (keyup.enter)="editCardTitle()"
+    >
+
   </div>
 
-  <div class="content flex-row">
-    <p class="bold"> {{ task.properties.name }}: </p>
-    <p>{{ task.content ? task.content : 'Vazio' }}</p>
+  <div class="content flex-row" *ngFor="let prop of task.properties">
+    <p class="bold"> {{ prop.name }}: </p>
+    <p>{{ prop.content ? prop.content : 'Vazio' }}</p>
   </div>
 
   <div class="buttons">
-    <button (click)="edit()">Editar</button>
+    <button (click)="editCard()">Editar</button>
     <button (click)="removeCard()">Remover</button>
   </div>
 </div>
+
+

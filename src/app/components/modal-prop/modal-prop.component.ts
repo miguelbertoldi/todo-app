@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Propriedade } from 'src/models/interfaces/Propriedade';
+import { Property } from 'src/models/interfaces/Property';
 
 @Component({
   selector: 'app-modal-prop',
   templateUrl: './modal-prop.component.html',
   styleUrls: ['./modal-prop.component.css']
 })
+
 export class ModalPropComponent implements OnInit {
 
   constructor() { }
@@ -17,9 +18,10 @@ export class ModalPropComponent implements OnInit {
 
   typeList: string[] = ['Seleção', 'Texto', 'Número'];
 
-  prop: Propriedade = {
+  prop: Property = {
     name: '',
-    type: ''
+    type: '',
+    content: ''
   }
 
   createProp() {

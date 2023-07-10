@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Tarefa } from 'src/models/interfaces/Tarefa';
+import { Task } from 'src/models/interfaces/Task';
 
 @Component({
   selector: 'app-task-card',
@@ -8,22 +8,34 @@ import { Tarefa } from 'src/models/interfaces/Tarefa';
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input('task') task: Tarefa;
+  @Input('task') task: Task;
   // @Input('hasPermission') hasPermission: boolean;
 
   @Output() remove = new EventEmitter()
+  @Output() edit = new EventEmitter();
+
+  isEditingTitle = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  editCard(): void {
+  editCardTitle(): void {
+    this.isEditingTitle = !this.isEditingTitle;
+  }
+
+  commitChange(): void {
+    this.edit.emit(this.task); //sempre que alterar é enviado pra home
+  }
+
+  editCardProperties(): void {
 
   }
 
   removeCard(): void {
     this.remove.emit(this.task);
   }
+
 
 }
