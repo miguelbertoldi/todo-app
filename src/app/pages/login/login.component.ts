@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userRepository: UserRepository,
-    private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {
     if (cookieService.cookieExists('user')) {
       this.router.navigate(['/home']);
@@ -27,15 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.userRepository.getUsers().subscribe({
-      next: (value) => {
-        for (const i of value) {
-          if (i.id == this.userId && i.password == this.userPassword) {
-            this.cookieService.createCookie(i);
-            this.router.navigate(['/home']);
-          } 
-        }
-      }
-    });
+    this.userRepository.login(this.userId, this.userPassword);
   }
 }

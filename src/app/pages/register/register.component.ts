@@ -1,3 +1,4 @@
+import { UserRepository } from 'src/repositories/user.repository';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -18,27 +19,27 @@ export class RegisterComponent implements OnInit {
     email: ''
   }
 
-  API_URL: string = 'http://localhost:4300/users';
+
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router
-  ) { 
+    private router: Router,
+    private userRepository: UserRepository
+  ) {
   }
 
   ngOnInit() {
   }
 
   register(): void {
-    const headers = new HttpHeaders({'myHeader': 'header'})
-    this.httpClient.post(
-      this.API_URL, 
-      this.user, {headers: headers})
-    .subscribe((res) => {
-      console.log(res);
-    })
 
-    this.router.navigate([''])
+    if (this.user.name != '' &&
+    this.user.password != '' &&
+    this.user.email != '' &&
+    this.user.id != '') {
+      this.userRepository.registerUser(this.user);
+      this.router.navigate([''])
+    }
   }
 
 }

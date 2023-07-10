@@ -14,7 +14,7 @@ export class AuthGuardService implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    const logged: User = JSON.parse(this.cookieService.getCookieValue('user'));
+    const logged: boolean = JSON.parse(this.cookieService.getCookieValue('user'));
 
     if (logged != null) {
       return true;
