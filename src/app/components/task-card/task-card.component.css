@@ -22,11 +22,13 @@
 
 .title input {
   text-align: center;
-  height: 30px;
+  height: 27px;
+  width: 150px;
   padding: 0;
   border: none;
 }
 
 .title input:focus {
   outline: none;
+  background-color: lightgray;
 }

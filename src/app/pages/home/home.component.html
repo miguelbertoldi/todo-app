@@ -1,18 +1,15 @@
 <button (click)="logout()">logout</button>
 
-<p>Tarefa</p>
-<app-modal
+<app-modal-task
     [propsList]="propsList"
     (newCard)="createCard($event)"
-></app-modal>
+></app-modal-task>
 
 <br>
 
-<p>Propriedade</p>
 <app-modal-prop
     (newProp)="createProp($event)"
 ></app-modal-prop>
-
 
 
 <section class="tasks-container">

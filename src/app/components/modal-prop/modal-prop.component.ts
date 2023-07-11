@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Property } from 'src/models/interfaces/Property';
 
 @Component({
@@ -14,6 +14,7 @@ export class ModalPropComponent implements OnInit {
   ngOnInit() {
   }
 
+  visible: boolean;
   @Output() newProp = new EventEmitter();
 
   typeList: string[] = ['Seleção', 'Texto', 'Número'];
@@ -29,6 +30,10 @@ export class ModalPropComponent implements OnInit {
     this.newProp.emit(propsCopy);
     this.prop.name = '';
     this.prop.type = '';
+  }
+
+  changeVisible(): void {
+    this.visible = !this.visible;
   }
 
 }
