@@ -1,9 +1,11 @@
 <button (click)="logout()">logout</button>
 
-<app-modal-task
-    [propsList]="propsList"
-    (newCard)="createCard($event)"
-></app-modal-task>
+<div>
+    <app-modal-task
+        [propsList]="propsList"
+        (newCard)="createCard($event)"
+    ></app-modal-task>
+</div>
 
 <br>
 
