@@ -16,3 +16,5 @@
 [0708/215845.639:ERROR:(-1)] Check failed: false. 
 [0709/204811.388:ERROR:(-1)] Check failed: false. 
 [0709/230830.209:ERROR:(-1)] Check failed: false. 
+[0711/141013.471:ERROR:registration_protocol_win.cc(106)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[0711/141253.296:ERROR:registration_protocol_win.cc(106)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
 import { Property } from 'src/models/interfaces/Property';
 import { Task } from 'src/models/interfaces/Task';
 
@@ -19,10 +19,9 @@ export class TaskCardComponent implements OnInit {
   isEditing: boolean;
   newProp: Property;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   editCard(): void {
     this.isEditing = !this.isEditing;
@@ -39,12 +38,13 @@ export class TaskCardComponent implements OnInit {
   }
 
   removeProperty(prop: Property): void {
-    this.task.properties.splice(this.task.properties.indexOf(prop));
+    this.task.properties.splice(this.task.properties.indexOf(prop), 1);
+    this.commitChange();
   }
 
-  propertyAlreadyExists(prop: Property): boolean {
+  propertyAlreadyAdded(prop: Property): boolean {
     return this.task.properties.some((property) => {
-      property.name === prop.name;
+      return property.name === prop.name;
     });
   }
 

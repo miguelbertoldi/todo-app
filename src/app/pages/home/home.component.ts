@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "src/models/classes/users/user";
 import { Property } from 'src/models/interfaces/Property';
@@ -15,7 +15,6 @@ export class HomeComponent {
   taskList: Task[] = [];
   propsList: Property[] = [];
   user: User = JSON.parse(this.cookieService.getCookieValue('user'));
-
 
   constructor(
     private router: Router,

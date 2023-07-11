@@ -16,6 +16,7 @@
 
 <section class="tasks-container">
     <app-task-card
+        #card
         *ngFor="let task of taskList"
         [task]="task"
         [propsList]="propsList"
