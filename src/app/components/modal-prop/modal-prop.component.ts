@@ -32,7 +32,7 @@ export class ModalPropComponent implements OnInit {
     this.prop.type = '';
   }
 
-  changeVisible(): void {
+  changeVisibility(): void {
     this.visible = !this.visible;
   }
 

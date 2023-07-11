@@ -13,13 +13,10 @@ export class ModalComponent implements OnInit {
   @Output() newCard = new EventEmitter();
   visible: boolean;
 
-
   task: Task = {
     name: '',
     properties: []
   }
-
-  property: Property;
 
   constructor() { }
 
@@ -36,7 +33,7 @@ export class ModalComponent implements OnInit {
 
   }
 
-  changeVisible(): void {
+  changeVisibility(): void {
     this.visible = !this.visible;
   }
 

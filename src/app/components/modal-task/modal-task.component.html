@@ -2,7 +2,7 @@
   <form>
     <div>
       <input type="text" placeholder="Nome da tarefa" [(ngModel)]="task.name" name="taskName" />
-      <button (click)="changeVisible()">Fechar</button>
+      <button (click)="changeVisibility()">Fechar</button>
     </div>
 
     <div>
@@ -12,5 +12,5 @@
 </div>
 
 <div *ngIf="!visible">
-  <button (click)="changeVisible()">Abrir modal tarefa</button>
+  <button (click)="changeVisibility()">Abrir modal tarefa</button>
 </div>

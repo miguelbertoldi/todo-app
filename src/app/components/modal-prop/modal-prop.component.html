@@ -5,7 +5,7 @@
       <select [(ngModel)]="prop.type" name="propType">
         <option *ngFor="let type of typeList">{{ type }}</option>
       </select>
-      <button (click)="changeVisible()">Fechar</button>
+      <button (click)="changeVisibility()">Fechar</button>
     </div>
 
     <div>
@@ -15,5 +15,5 @@
 </div>
 
 <div *ngIf="!visible">
-  <button (click)="changeVisible()">Abrir modal propriedade</button>
+  <button (click)="changeVisibility()">Abrir modal propriedade</button>
 </div>
