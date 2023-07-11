@@ -9,6 +9,11 @@
     padding: 10px;
 }
 
+.content {
+  width: 100%;
+  text-align: center;
+}
+
 .title {
     font-size: 20px;
     cursor: pointer;
@@ -26,9 +31,23 @@
   width: 150px;
   padding: 0;
   border: none;
+  background-color: lightgrey;
 }
 
 .title input:focus {
   outline: none;
   background-color: lightgray;
 }
+
+select {
+  width: 140px;
+}
+
+option:hover {
+  background-color: red;
+}
+
+option:focus {
+  background-color: red;
+}
+

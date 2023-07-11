@@ -1,29 +1,42 @@
 <div id="card">
   <div class="title bold">
 
-    <p *ngIf="!isEditingTitle"
-        (dblclick)="editCardTitle()">
+    <p *ngIf="!isEditing">
         {{ task.name ? task.name : 'Nome indefinido' }}
     </p>
 
     <input type="text"
         class="title bold"
-        *ngIf="isEditingTitle"
+        *ngIf="isEditing"
         [(ngModel)]="task.name"
         (change)="commitChange()"
-        (keyup.enter)="editCardTitle()"
+        (keyup.enter)="editCard()"
     >
 
   </div>
 
-  <div class="content flex-row" *ngFor="let prop of task.properties">
-    <p class="bold"> {{ prop.name }}: </p>
+  <div class="content flex-row" 
+      *ngFor="let prop of task.properties">
+      
+    <p class="bold flex-row"> {{ prop.name }}: </p>
     <p>{{ prop.content ? prop.content : 'Vazio' }}</p>
+    <button (click)="removeProperty(prop)" *ngIf="isEditing"> X </button>
   </div>
 
-  <div class="buttons">
+  <div *ngIf="isEditing">
+    <select [(ngModel)]="newProp" (change)="addProperty()">
+      <option *ngFor="let prop of propsList" [ngValue]="prop"> {{ prop.name }} </option>
+    </select> 
+    <!-- verificar se ja foi adicionado  -->
+  </div>
+
+  <div class="buttons" *ngIf="!isEditing">
     <button (click)="editCard()">Editar</button>
     <button (click)="removeCard()">Remover</button>
+  </div>
+
+  <div *ngIf="isEditing">
+    <button (click)="submit()">Confirmar</button>
   </div>
 </div>
 

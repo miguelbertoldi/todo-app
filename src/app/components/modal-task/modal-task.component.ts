@@ -26,7 +26,7 @@ export class ModalComponent implements OnInit {
   createCard(): void {
     const newCard = { ...this.task };
     this.newCard.emit(newCard);
-    this.task.name = '';
+    this.changeVisibility();
   }
 
   addProperty(): void {
@@ -34,6 +34,7 @@ export class ModalComponent implements OnInit {
   }
 
   changeVisibility(): void {
+    this.task.name = '';
     this.visible = !this.visible;
   }
 

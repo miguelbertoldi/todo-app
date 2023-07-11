@@ -14,8 +14,8 @@ export class ModalPropComponent implements OnInit {
   ngOnInit() {
   }
 
-  visible: boolean = true;
   @Output() newProp = new EventEmitter();
+  visible: boolean;
 
   typeList: string[] = ['Seleção', 'Texto', 'Número'];
 
@@ -28,11 +28,12 @@ export class ModalPropComponent implements OnInit {
   createProp() {
     const propsCopy = { ...this.prop }
     this.newProp.emit(propsCopy);
-    this.prop.name = '';
-    this.prop.type = '';
+    this.changeVisibility();
   }
 
   changeVisibility(): void {
+    this.prop.name = '';
+    this.prop.type = '';
     this.visible = !this.visible;
   }
 
