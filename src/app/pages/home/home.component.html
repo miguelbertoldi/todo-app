@@ -1,0 +1,29 @@
+<button (click)="logout()">logout</button>
+
+<div>
+    <app-modal-task
+        [propsList]="propsList"
+        (newCard)="createCard($event)"
+    ></app-modal-task>
+</div>
+
+<br>
+
+<app-modal-prop
+    (newProp)="createProp($event)"
+></app-modal-prop>
+
+
+<section class="tasks-container">
+    <app-task-card
+        #card
+        *ngFor="let task of taskList"
+        [task]="task"
+        [propsList]="propsList"
+        (edit)="editCard()"
+        (remove)="removeCard($event)"
+        draggable="true"
+    ></app-task-card>
+</section>
+
+<!-- [hasPermission]="hasPermission()" -->

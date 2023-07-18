@@ -1,0 +1,15 @@
+<section>
+    <form>
+      <label>
+        <p>Login</p>
+      </label>
+      <div>
+        <input name="id" type="text" placeholder="Username" [(ngModel)]="userId"/>
+        <input name="password" type="password" placeholder="Senha" [(ngModel)]="userPassword"/>
+      </div>
+      <div>
+        <button (click)="login()">Entrar</button>
+        <a [routerLink]="['/register']">Não tenho uma conta</a>
+      </div>
+    </form>
+  </section>

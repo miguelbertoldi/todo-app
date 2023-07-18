@@ -1,0 +1,53 @@
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px grey;
+    width: 260px;
+    min-height: 150px;
+    padding: 10px;
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.title:hover {
+  background-color: lightgray;
+}
+
+.title input {
+  text-align: center;
+  height: 27px;
+  width: 150px;
+  padding: 0;
+  border: none;
+  background-color: lightgrey;
+}
+
+.title input:focus {
+  outline: none;
+  background-color: lightgray;
+}
+
+select {
+  width: 140px;
+}
+
+option:hover {
+  background-color: red;
+}
+
+option:focus {
+  background-color: red;
+}
+

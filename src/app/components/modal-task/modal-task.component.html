@@ -1,0 +1,16 @@
+<div id="all" *ngIf="visible">
+  <form>
+    <div>
+      <input type="text" placeholder="Nome da tarefa" [(ngModel)]="task.name" name="taskName" />
+      <button (click)="changeVisibility()">Fechar</button>
+    </div>
+
+    <div>
+      <button (click)="createCard()">Cadastrar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!visible">
+  <button (click)="changeVisibility()">Abrir modal tarefa</button>
+</div>

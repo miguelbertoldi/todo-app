@@ -3,3 +3,13 @@
     list-style-type: none;
     font-family: sans-serif;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+.flex-row {
+  display: flex;
+  gap: 5px;
+}
+

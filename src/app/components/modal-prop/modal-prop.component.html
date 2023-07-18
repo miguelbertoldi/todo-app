@@ -1,0 +1,19 @@
+<div id="all" *ngIf="visible">
+  <form>
+    <div>
+      <input type="text" placeholder="Nome da propriedade" [(ngModel)]="prop.name" name="propName" />
+      <select [(ngModel)]="prop.type" name="propType">
+        <option *ngFor="let type of typeList">{{ type }}</option>
+      </select>
+      <button (click)="changeVisibility()">Fechar</button>
+    </div>
+
+    <div>
+      <button (click)="createProp()">Cadastrar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!visible">
+  <button (click)="changeVisibility()">Abrir modal propriedade</button>
+</div>

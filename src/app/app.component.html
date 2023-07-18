@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="showMenu">
 
   <div>
     <p> {{ title }} </p>
@@ -7,9 +7,12 @@
   <nav class="buttons">
     <button routerLink="/propriedades">Propriedades</button>
     <button routerLink="/tarefas">Tarefas</button>
+    <button routerLink="/login">Login</button>
   </nav>
 </header>
 
 <main>
   <router-outlet></router-outlet>
 </main>
+
+
